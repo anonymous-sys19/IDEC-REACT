@@ -9,15 +9,16 @@ import '/public/css/publication.css'
 import '/public/css/register.css'
 import '/public/css/sobreNosotros.css'
 import '/public/css/style.css'
-
+import '/public/css/index.css'
+import '/node_modules/animate.css/animate.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
-import MenuNavbar from "./nav.jsx";
+import MenuNavbar from "./Nav.jsx";
 // import AppAuth from './routes/Auth/AppAuth.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-      <MenuNavbar></MenuNavbar>
+      <MenuNavbar />
       
   </React.StrictMode>,
 )

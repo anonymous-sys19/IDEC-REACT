@@ -1,14 +1,31 @@
 /* eslint-disable react/prop-types */
-// ProtectedRoute.jsx
-import { Redirect, Route } from 'react-router-dom';
+//import { useEffect, useState } from 'react';
+import { Route, Redirect } from 'react-router-dom';
+// import { supabase } from './Auth/supabaseClient.js';
+import AppAuth from './Auth/AppAuth.jsx';
+const ProtectedRoute = ({ component: Component, ...rest }) => {
+  // const [session, setSession] = useState(null)
+  // useEffect(() => {
+  //   supabase.auth.getSession().then(({ data: { session } }) => {
+  //     setSession(session)
+  //   })
 
-const ProtectedRoute = ({ component: Component, isAuthenticated, ...rest }) => {
+  //   supabase.auth.onAuthStateChange((_event, session) => {
+  //     setSession(session)
+  //   })
+  // }, [])
+
   return (
     <Route
       {...rest}
-      render={(props) =>
-        isAuthenticated ? <Component {...props} /> : <Redirect to="/login" />
-      }
+      render={(props) => {
+        // Si hay sesión, renderiza el componente protegido, de lo contrario, redirige
+        return AppAuth ? (
+          <Component {...props} />
+        ) : (
+          <Redirect to="/" />
+        );
+      }}
     />
   );
 };

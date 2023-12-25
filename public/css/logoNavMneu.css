@@ -1,0 +1,21 @@
+.divNav {
+    display: flex;
+    /* background: white; */
+    margin: -2rem 0 0 -1rem;
+    align-items: center;
+    position: fixed;
+    z-index: 5;
+
+}
+
+.imglogoidecCola {
+    width: 60px;
+    padding: 1rem;
+}
+
+.listaSpanIDEC {
+    font-size: 1rem;
+    font-weight: 800;
+    color: darkblue;
+    padding: 5px;
+}

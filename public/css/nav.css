@@ -89,7 +89,10 @@ body {
   border: none;
   border-radius: 10px;
   font-weight: 900;
-  
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
 }
 
 .openbtn:hover {

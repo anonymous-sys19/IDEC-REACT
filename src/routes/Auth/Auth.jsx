@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { supabase } from './supabaseClient';
 
+
 export default function Auth() {
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState('');
@@ -10,17 +11,26 @@ export default function Auth() {
     event.preventDefault();
 
     setLoading(true);
-    const { user, error } = await supabase.auth.signInWithPassword({ email, password });
 
-    if (error) {
-      alert(error.error_description || error.message);
-    } else {
-      alert(`Welcome, ${user.email}!`);
-      // Puedes redirigir a otra página o realizar otras acciones después del inicio de sesión
+    try {
+      const { user, error } = await supabase.auth.signInWithPassword({ email, password });
+
+      if (error) {
+        alert(error.error_description || error.message);
+      } else {
+        alert(`Welcome, ${user.email}!`);
+        // Puedes redirigir a otra página o realizar otras acciones después del inicio de sesión
+
+      }
+    } catch (error) {
+      console.error('Error during login:', error.message);
+      alert('An unexpected error occurred during login.');
+    } finally {
+      setLoading(false);
     }
-
-    setLoading(false);
   };
+
+
 
   const handleSignUp = async (event) => {
     event.preventDefault();
@@ -58,7 +68,7 @@ export default function Auth() {
             Welcome IDEC
           </span>
         </div>
-        <form className="animate">
+        <form className="animate" onSubmit={handleLogin}>
           <div className="container">
 
             <input
@@ -106,9 +116,9 @@ export default function Auth() {
               </button>
             </div>
           </div>
+
         </form>
       </div>
-
 
       <div className="">
         <picture>
@@ -118,3 +128,11 @@ export default function Auth() {
     </div>
   );
 }
+
+
+
+
+
+
+
+

@@ -1,14 +1,19 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 import Logo from './partials/logo.jsx'
+import LogoNavMenu from './partials/logoNavMenu.jsx';
 import Upload from './routes/upload.jsx';
 import Idec from './routes/idec.jsx';
-import AppAuth from './routes/Auth/AppAuth.jsx';
+import Auth from './routes/Auth/Auth.jsx';
+import  AppAuth  from './routes/Auth/AppAuth.jsx';
 import Biblia from './routes/biblia.jsx';
 import Publicaciones from './routes/publicaciones.jsx';
-import Login from './routes/Auth/Perfil.jsx';
-import ProtectedRoute from './routes/ProtectedRoute.jsx';
+import Perfil from './routes/Auth/Perfil.jsx';
+import Logout from './routes/Auth/Logout.jsx';
+
 import { supabase } from './routes/Auth/supabaseClient.js';
+import ProtectedRoute from './routes/ProtectedRoute.jsx'
 
 import 'bootstrap/dist/css/bootstrap.min.css'; // Importa los estilos de Bootstrap
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Importa los scripts de Bootstrap
@@ -26,21 +31,22 @@ import SplitButton from 'react-bootstrap/SplitButton';
 import { BsFillGearFill } from "react-icons/bs";
 
 
-import { BrowserRouter, Route, Link, Switch } from 'react-router-dom'
+import { BrowserRouter, Route, Link, Switch, useHistory } from 'react-router-dom'
 import { useEffect, useState } from 'react';
+
+
 const MenuNavbar = () => {
 
-  const [session, setSession] = useState(null);
-
+  const [session, setSession] = useState(null)
   useEffect(() => {
-    const fetchSession = async () => {
-      const user = supabase.auth.user();
-      setSession(user);
-    };
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      setSession(session)
+    })
 
-    // Lógica para obtener la sesión del usuario
-    fetchSession();
-  }, []); // Asegúrate de ejecutar esto solo una vez al montar el componente
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session)
+    })
+  }, [])
 
   return (
     <BrowserRouter>
@@ -58,7 +64,7 @@ const MenuNavbar = () => {
               >
                 <Offcanvas.Header closeButton>
                   <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                    <Logo />
+                    <LogoNavMenu />
                   </Offcanvas.Title>
                 </Offcanvas.Header>
                 <Offcanvas.Body>
@@ -75,17 +81,25 @@ const MenuNavbar = () => {
                       <NavDropdown.Divider />
                       <NavDropdown.Item > <Link to='/mision'>Mision y Vision</Link> </NavDropdown.Item>
                     </NavDropdown>
-
-                    <NavDropdown
-                      title={`Setting`}
-                      id={`offcanvasNavbarDropdown-expand-${expand}`}
-                      drop={'start'}
-                    >
-                      <NavDropdown.Item href='/perfil'>Perfil </NavDropdown.Item>
-                      <NavDropdown.Item href='/register'>Register </NavDropdown.Item>
-                      <NavDropdown.Divider />
-                      <NavDropdown.Item href='/Upload'>Upload </NavDropdown.Item>
-                    </NavDropdown>
+                    {session ? (
+                      <NavDropdown
+                        title={`Setting`}
+                        id={`offcanvasNavbarDropdown-expand-${expand}`}
+                        drop={'start'}>
+                        <NavDropdown.Item href='/Upload'>Upload </NavDropdown.Item>
+                        <NavDropdown.Divider />
+                        <NavDropdown.Item href='/perfil'>Perfil </NavDropdown.Item>
+                        <NavDropdown.Item href='/logout'>Logout</NavDropdown.Item>
+                      </NavDropdown>
+                    ) : (
+                      <NavDropdown
+                        title={`Setting`}
+                        id={`offcanvasNavbarDropdown-expand-${expand}`}
+                        drop={'start'}>
+                        <NavDropdown.Item href='/register'>Register </NavDropdown.Item>
+                        <NavDropdown.Divider />
+                      </NavDropdown>
+                    )}
                   </Nav>
                   <Form className="d-flex">
                     <Form.Control
@@ -101,32 +115,36 @@ const MenuNavbar = () => {
             </Container>
           </Navbar>
         ))}
-        <Switch>
-          <Route path='/register'>
-            <AppAuth />
-          </Route >
-          <Route path='/perfil'>
-            <Login />
-          </Route >
-          <ProtectedRoute
-            path="/upload"
-            component={Upload}
-            isAuthenticated={session !== null}
-          />
-          <Route path='/biblia'>
-            <Biblia />
-          </Route>
-          <Route path='/publico'>
-            <Publicaciones />
-          </Route>
-          <Route path='/'>
-            <Idec />
-          </Route >
-        </Switch>
-
       </header>
-
-
+      <Switch>
+        <Route path='/publico'>
+          <Publicaciones />
+        </Route>
+        <Route path='/biblia'>
+          <Biblia />
+        </Route>
+        {/* <ProtectedRoute path="/perfil" component={Perfil} />
+            <ProtectedRoute path="/upload" component={Upload} />
+            <ProtectedRoute path="/logout" component={Logout} /> */}
+        <Route path="/upload">
+          <Upload />
+        </Route>
+        <Route path='/perfil'>
+          <Perfil />
+        </Route>
+        <Route path='/logout'>
+          <Logout />
+        </Route>
+        <Route path='/register'>
+          <AppAuth />
+        </Route>
+        <Route>
+          <Idec />
+        </Route>
+        <Route path='/'>
+          <Idec />
+        </Route>
+      </Switch>
     </BrowserRouter>
   )
 }

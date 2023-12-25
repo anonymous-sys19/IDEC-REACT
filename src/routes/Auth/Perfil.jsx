@@ -1,5 +1,5 @@
 
-export default function Login() {
+export default function Perfil() {
   return (
     <div>Perfil</div>
   )
