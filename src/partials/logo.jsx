@@ -8,7 +8,7 @@ function Logo() {
         <div>
           <img
             className="logoidecCola animate__animated animate__zoomInLeft"
-            src="/images/logo-idec.png"
+            src="/public/images/logo-idec.png"
             width="100px"
             alt="logo"
           />

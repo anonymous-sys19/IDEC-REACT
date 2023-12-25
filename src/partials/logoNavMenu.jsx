@@ -10,8 +10,8 @@ function logoNavMenu() {
         <div>
           <img
             className="imglogoidecCola animate__animated animate__zoomInLeft"
-            src="/images/logo-idec.png"
-            
+            src="public/images/logo-idec.png"
+
             alt="logo"
           />
         </div>
