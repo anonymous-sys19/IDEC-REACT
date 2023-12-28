@@ -39,7 +39,7 @@ const Publicaciones = () => {
                                 <div>
                                     <div className='ProfileItems'>
                                         <div>
-                                            <img className='PublicAvatar' src="/public/images/IDEC.jpg" alt="" />
+                                            <img className='PublicAvatar' src="public/images/IDEC.jpg" alt="" />
                                         </div>
                                         <div className='UserDate'>
                                             <a href='/perfil'>Greyvin Mayorga</a>
@@ -61,7 +61,7 @@ const Publicaciones = () => {
                         <hr size="1px" color="black" />
                     </span>
                     <div className="container">
-                        <img className='imgPublic' src="./public/images/principal.jpg" alt="" />
+                        <img className='imgPublic' src="public/images/principal.jpg" alt="" />
                         
                     </div>
                 </blockquote>
