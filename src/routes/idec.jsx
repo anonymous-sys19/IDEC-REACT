@@ -29,7 +29,7 @@ const Idec = () => {
           <script async defer src="https://dailyverses.net/get/verse.js?language=nvi"></script>
         </Helmet> */}
         <div className="contHeader">
-          <img className='imgContainer' src="/public/images/logo-idec.png" alt="" />
+          <img className='imgContainer' src="/images/logo-idec.png" alt="" />
           {/* <div className="container">
             <div className="intro-text">
               <div className="intro-lead-in">
