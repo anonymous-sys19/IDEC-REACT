@@ -20,11 +20,7 @@ const AuthProvider = ({ children }) => {
         };
 
         const { data: { authListener } } = supabase.auth.onAuthStateChange(callback)
-            // () => {
-            //     console.log(event, userSession);
-            //     setSession(userSession);
-            // });
-
+       
         return () => {
             // Llamamos a la función devuelta por onAuthStateChange para cancelar la suscripción.
             authListener.unsubscribe();

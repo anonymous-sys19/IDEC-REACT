@@ -13,14 +13,17 @@ export default function Auth() {
     setLoading(true);
 
     try {
-      const { user, error } = await supabase.auth.signInWithPassword({ email, password });
+      const { data, error } = await supabase.auth.signInWithPassword({ email, password });
 
       if (error) {
         alert(error.error_description || error.message);
-      } else {
-        alert(`Welcome, ${user.email}!`);
+      } else if (data) {
+        alert(`Welcome, ${data.user.email}!`);
+        console.log(data);
         // Puedes redirigir a otra página o realizar otras acciones después del inicio de sesión
 
+      } else {
+        alert("An unexpexted errrot a ocurrido");
       }
     } catch (error) {
       console.error('Error during login:', error.message);
@@ -31,17 +34,16 @@ export default function Auth() {
   };
 
 
-
   const handleSignUp = async (event) => {
     event.preventDefault();
 
     setLoading(true);
-    const { user, error } = await supabase.auth.signUp({ email, password });
+    const { data, error } = await supabase.auth.signUp({ email, password });
 
     if (error) {
       alert(error.error_description || error.message);
     } else {
-      alert(`Welcome, ${user.email}! Please check your email for verification.`);
+      alert(`Welcome, ${data.email}! Please check your email for verification.`);
       // Puedes redirigir a otra página o realizar otras acciones después del registro
     }
 

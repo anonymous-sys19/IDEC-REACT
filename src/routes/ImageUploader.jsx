@@ -39,7 +39,7 @@ const ImageUploader = () => {
       // Ahora puedes almacenar la información asociada a la imagen en tu base de datos
       // eslint-disable-next-line no-unused-vars
       const { data: imageData, error: imageError } = await supabase
-        .from("idec-table-images")
+        .from("idectableimages")
         .upsert(
           [
             {

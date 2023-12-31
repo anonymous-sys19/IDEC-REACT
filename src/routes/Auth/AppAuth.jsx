@@ -27,25 +27,3 @@ function AppAuth() {
 }
 
 export default AppAuth
-
-// AppAuth.jsx
-
-// function AppAuth() {
-//   return (
-//     <AuthProvider>
-//       <AuthComponent />
-//     </AuthProvider>
-//   );
-// }
-
-// const AuthComponent = () => {
-//   const { session } = useAuth();
-//   console.log('Sesión:', session);
-//   return (
-//     <div className="container" style={{ padding: '50px 0 100px 0' }}>
-//        {!session ? <Auth /> : <Account key={session.user.id} session={session} />}
-//     </div>
-//   );
-// };
-
-// export default AppAuth;
