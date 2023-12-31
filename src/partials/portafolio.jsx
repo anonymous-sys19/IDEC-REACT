@@ -14,6 +14,7 @@ const Portafolio = () => {
           overflow: 'hidden',
           borderRadius: '8px',
           willChange: 'transform',
+          background: '#d9def2ac',
         }}
       >
         <iframe
@@ -28,7 +29,7 @@ const Portafolio = () => {
             padding: 0,
             margin: 0,
           }}
-          src="https://www.canva.com/design/DAFz-MRjcuw/view?embed"
+          src="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAF1ZSTruUA&#x2F;view?embed"
           allowFullScreen
           allow="fullscreen"
         ></iframe>
@@ -39,9 +40,9 @@ const Portafolio = () => {
 
   return (
     <>
-      <div>
+      <div className="container container-portafolio">
         <CanvaEmbed />
-        <a href="https://www.canva.com/design/DAFz-MRjcuw/view?utm_content=DAFz-MRjcuw&utm_campaign=designshare&utm_medium=embeds&utm_source=link"
+        <a href="https:&#x2F;&#x2F;www.canva.com&#x2F;design&#x2F;DAF1ZSTruUA&#x2F;view?utm_content=DAF1ZSTruUA&amp;utm_campaign=designshare&amp;utm_medium=embeds&amp;utm_source=link"
           target="_blank"
           rel="noopener noreferrer"
         >
@@ -50,7 +51,7 @@ const Portafolio = () => {
         Greyvin Mayorga
       </div>
 
-
+   
     </>
   )
 }

@@ -1,6 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet';
-
+import html2canvas from 'html2canvas';
 
 const ServiceSection = () => {
     useEffect(() => {
@@ -16,23 +16,40 @@ const ServiceSection = () => {
             document.getElementById('dailyVersesWrapper').removeChild(script);
         };
     }, []);
+
+    const dailyVersesRef = useRef(null);
+
+    const captureAndDownloadImage = async () => {
+        const canvas = await html2canvas(dailyVersesRef.current);
+        const imgData = canvas.toDataURL('image/png');
+        const link = document.createElement('a');
+        link.href = imgData;
+        link.download = 'dailyVerses.png';
+        link.click();
+    };
     return (
         <section id="services">
 
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12 text-center">
-                        <h2 className="section-heading">
-                            Services
-                        </h2>
-                        <h3 className="section-subheading text-muted">
-                            <div className="" id="dailyVersesWrapper">
-
-                            </div>  {/* New RAndom Versicyculo  Cada vez que refresh the page*/}
+                        <div className="sec-daily-father section-subheading text-muted">
+                            <section className='sec-daily' ref={dailyVersesRef}>
+                                <div className="dailyVerse" id="dailyVersesWrapper">
+                                    {/* Contenido del div */}
+                                </div>
+                            </section>
+                            <button style={
+                                {
+                                    'background': 'aquamarine',
+                                    'color': 'black',
+                                    'border': 'none',
+                                }
+                            } onClick={captureAndDownloadImage}>Capturar imagen</button>
                             <Helmet>
                                 <script async defer src="https://dailyverses.net/get/verse.js?language=nvi"></script>
                             </Helmet>
-                        </h3>
+                        </div>
                     </div>
                 </div>
                 <div className="row text-center">
@@ -74,7 +91,7 @@ const ServiceSection = () => {
                     </div>
                 </div>
             </div>
-        </section>
+        </section >
     )
 }
 
