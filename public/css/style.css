@@ -16,6 +16,7 @@
 
 body {
   min-width: min-content;
+  background: rgb(208, 208, 233);
 }
 /* .offcanvas-body {
   overflow-y: clip !important;

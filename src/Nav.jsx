@@ -53,16 +53,12 @@ const MenuNavbar = () => {
       setSession(session)
     })
   }, [])
-  if (loading) {
-    return <div>Loading ....</div>;
-  }
-
   return (
     <BrowserRouter>
       <header>
         <Logo />
         {['xl'].map((expand) => (
-          <Navbar key={expand} expand={expand} className="bg-body-tertiary mb-3">
+          <Navbar key={expand} expand={expand} className="mb-3">
             <Container fluid>
               <Navbar.Brand></Navbar.Brand>
               <Navbar.Toggle aria-controls={`offcanvasNavbar-expand-${expand}`} />

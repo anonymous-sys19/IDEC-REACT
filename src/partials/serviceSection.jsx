@@ -6,14 +6,14 @@ const ServiceSection = () => {
     useEffect(() => {
         // Agrega el script al DOM
         const script = document.createElement('script');
-        script.src = 'https://dailyverses.net/get/random.js?language=nvi';
+        script.src = 'https://dailyverses.net/get/verse.js?language=nvi';
         script.async = true;
         script.defer = true;
-        document.getElementById('dailyVersesRandom').appendChild(script);
+        document.getElementById('dailyVersesWrapper').appendChild(script);
 
         // Limpia el script al desmontar el componente
         return () => {
-            document.getElementById('dailyVersesRandom').removeChild(script);
+            document.getElementById('dailyVersesWrapper').removeChild(script);
         };
     }, []);
     return (
@@ -26,9 +26,11 @@ const ServiceSection = () => {
                             Services
                         </h2>
                         <h3 className="section-subheading text-muted">
-                            <div id="dailyVersesRandom"> Loading ... </div>  {/* New RAndom Versicyculo  Cada vez que refresh the page*/}
+                            <div className="" id="dailyVersesWrapper">
+
+                            </div>  {/* New RAndom Versicyculo  Cada vez que refresh the page*/}
                             <Helmet>
-                                <script async defer src="https://dailyverses.net/get/random.js?language=nvi"></script>
+                                <script async defer src="https://dailyverses.net/get/verse.js?language=nvi"></script>
                             </Helmet>
                         </h3>
                     </div>

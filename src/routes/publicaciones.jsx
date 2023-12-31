@@ -122,12 +122,6 @@ export default function Publicaciones({ session }) {
             downloadImage(avatarUrl); // Llama a downloadImage cuando el avatarUrl está disponible
         }
     }, [loading, avatarUrl, downloadImage]);
-
-
-    if (loading) {
-        return <div>Loading ....</div>;
-    }
-
     return (
         <>
 

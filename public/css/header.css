@@ -1,8 +1,10 @@
 header {
     /* width: 100%;   */
     /* margin: auto; */
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    background: lavender;
+    /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); */
+    /* background: rgb(208, 208, 233); */
+    background: rgb(2, 0, 36);
+    background:radial-gradient(circle, rgba(2, 0, 36, 1) 0%, rgba(255, 255, 255, 1) 0%, #d9def2 90%);
 }
 
 nav {
@@ -11,14 +13,11 @@ nav {
     align-items: center;
 }
 
-.mynav:hover {
-    background-color: rgba(0, 0, 0, 0.168);
-}
 
 .contLog {
     display: flex;
     /* background: white; */
-    margin:auto;
+    margin: auto;
     align-items: center;
     position: fixed;
     z-index: 5;
@@ -42,7 +41,7 @@ nav {
 
 .logoidecCola {
     /* width: 23px; */
-        /* width: revert-layer; */
+    /* width: revert-layer; */
     /* height: -webkit-fill-available; */
     padding: 1rem;
 }
@@ -53,6 +52,3 @@ nav {
     color: darkblue;
     padding: 5px;
 }
-
-
-
