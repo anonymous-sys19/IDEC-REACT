@@ -86,6 +86,15 @@ const MenuNavbar = () => {
                       <NavDropdown.Divider />
                       <NavDropdown.Item > <Link to='/mision'>Mision y Vision</Link> </NavDropdown.Item>
                     </NavDropdown>
+                    <NavDropdown
+                      title="Ministerios"
+                      id={`offcanvasNavbarDropdown-expand-${expand}`}
+                    >
+                      <NavDropdown.Item href='#'>GE Junior</NavDropdown.Item>
+                      <NavDropdown.Item href='#'>GE Emergente</NavDropdown.Item>
+                      <NavDropdown.Item href='#'>Ministerio de la Mujer</NavDropdown.Item>
+                      <NavDropdown.Divider />
+                    </NavDropdown>
                     {session ? (
                       <>
 
