@@ -14,11 +14,24 @@ import '/node_modules/animate.css/animate.css'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import MenuNavbar from "./Nav.jsx";
+import { BrowserRouter as Router } from 'react-router-dom';
 // import AppAuth from './routes/Auth/AppAuth.jsx'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fab } from '@fortawesome/free-brands-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+
+library.add(fab);
+
+
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+      <Router>
       <MenuNavbar />
       
+      </Router>
   </React.StrictMode>,
 )

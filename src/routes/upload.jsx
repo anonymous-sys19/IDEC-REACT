@@ -3,7 +3,7 @@ const Upload = () => {
         <section className="section my-4">
             <div className="container text-center">
                 <div className="title py-5">
-                    <h1>Node File Uploader</h1>
+                    <h1>IDEC UPLOAD</h1>
                     <p className="subtitle">Upload Images to the <strong>Server</strong></p>
                 </div>
 

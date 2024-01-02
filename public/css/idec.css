@@ -166,6 +166,10 @@ section h3.section-subheading {
     }
 }
 
+.timelimeFather1{
+    background: lavender;
+    padding: 3rem 0 0 0;
+}
 .timeline {
     position: relative;
     padding: 0;
@@ -180,7 +184,7 @@ section h3.section-subheading {
     left: 40px;
     width: 2px;
     margin-left: -1.5px;
-    background-color: #f1f1f1;
+    background-color: #cacaca;
 }
 
 .timeline>li {
@@ -191,7 +195,7 @@ section h3.section-subheading {
 
 .timeline>li:before,
 .timeline>li:after {
-    content: " ";
+    content: "";
     display: table;
 }
 
@@ -228,11 +232,11 @@ section h3.section-subheading {
     width: 80px;
     height: 80px;
     margin-left: 0;
-    border: 7px solid #f1f1f1;
+    border: 1px solid #9a9898;
     border-radius: 100%;
     text-align: center;
-    color: #fff;
-    background-color: #1ee2e7;
+    color: #796f6f;
+    background: #ffffff;
 }
 
 .timeline>li .timeline-image h4 {

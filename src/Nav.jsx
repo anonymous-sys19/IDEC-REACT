@@ -4,9 +4,10 @@
 import '/public/css/publication.css'
 //Hooks
 import UseProfile from './hooks/useProfile.js';
+import { supabase } from './routes/Auth/supabaseClient.js';
 
-import Logo from './partials/logo.jsx'
-import LogoNavMenu from './partials/logoNavMenu.jsx';
+import Logo from './components/logo.jsx'
+import LogoNavMenu from './components/logoNavMenu.jsx';
 import Upload from './routes/ImageUploader.jsx';
 import Idec from './routes/idec.jsx';
 import AppAuth from './routes/Auth/AppAuth.jsx';
@@ -14,7 +15,7 @@ import Biblia from './routes/biblia.jsx';
 import Publicaciones from './routes/publicaciones.jsx';
 import Perfil from './routes/profile.jsx';
 import Logout from './routes/Auth/Logout.jsx';
-import { supabase } from './routes/Auth/supabaseClient.js';
+import PrincipiosDoctrinales from './routes/QuienesSomos/PrincipiosDoctrinales.jsx';
 
 import 'bootstrap/dist/css/bootstrap.min.css'; // Importa los estilos de Bootstrap
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Importa los scripts de Bootstrap
@@ -25,10 +26,8 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
-
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-
 import { BrowserRouter, Route, Link, Switch, useHistory } from 'react-router-dom'
 import { useEffect, useState } from 'react';
 
@@ -38,6 +37,27 @@ const MenuNavbar = () => {
   const [session, setSession] = useState(null)
   //
 
+  const [searchTerm, setSearchTerm] = useState('');
+  const [iframeSize, setIframeSize] = useState({ width: 0, height: 0 });
+
+  const handleSearch = () => {
+    const iframe = document.getElementById('searchIframe');
+    if (iframe) {
+      // Actualiza el atributo src del iframe con la URL de búsqueda
+      iframe.src = `https://bible.knowing-jesus.com/Espa%C3%B1al/words/${searchTerm}`;
+
+      // Actualiza el tamaño del iframe después de realizar la búsqueda
+      setIframeSize({ width: '100%', height: 600 });
+    }
+  };
+
+  const handleInputChange = (e) => {
+    setSearchTerm(e.target.value);
+
+    // Actualiza el tamaño del iframe cuando cambia el input
+    setIframeSize({ width: 0, height: 0 });
+  };
+  //
   useEffect(() => {
     if (!loading && avatarUrl) {
       downloadImage(avatarUrl); // Llama a downloadImage cuando el avatarUrl está disponible
@@ -81,18 +101,21 @@ const MenuNavbar = () => {
                       title="Quienes somos"
                       id={`offcanvasNavbarDropdown-expand-${expand}`}
                     >
-                      <NavDropdown.Item > <Link to='/historia'>Historia</Link></NavDropdown.Item>
-                      <NavDropdown.Item > <Link to='/conexion'>Conexion 2030</Link> </NavDropdown.Item>
+                      <NavDropdown.Item href='/historia'>Historia</NavDropdown.Item>
+                      <NavDropdown.Item href='/conexion' > Conexion 2030 </NavDropdown.Item>
+                      <NavDropdown.Item href='/mision'>Mision y Vision </NavDropdown.Item>
+                      <NavDropdown.Item href='/declaracion-de-fe'>Declaracion de Fe</NavDropdown.Item>
+                      <NavDropdown.Item href='/principios-doctrinales'>Principios Doctrinales</NavDropdown.Item>
                       <NavDropdown.Divider />
-                      <NavDropdown.Item > <Link to='/mision'>Mision y Vision</Link> </NavDropdown.Item>
+
                     </NavDropdown>
                     <NavDropdown
                       title="Ministerios"
                       id={`offcanvasNavbarDropdown-expand-${expand}`}
                     >
-                      <NavDropdown.Item href='#'>GE Junior</NavDropdown.Item>
-                      <NavDropdown.Item href='#'>GE Emergente</NavDropdown.Item>
-                      <NavDropdown.Item href='#'>Ministerio de la Mujer</NavDropdown.Item>
+                      <NavDropdown.Item href='/ge-junior'>GE Junior</NavDropdown.Item>
+                      <NavDropdown.Item href='/ge-emergente'>GE Emergente</NavDropdown.Item>
+                      <NavDropdown.Item href='/ministerio-de-la-mujer'>Ministerio de la Mujer</NavDropdown.Item>
                       <NavDropdown.Divider />
                     </NavDropdown>
                     {session ? (
@@ -136,20 +159,31 @@ const MenuNavbar = () => {
                         </NavDropdown>
                       )}
                   </Nav>
-                  <Form className="d-flex">
+                  <Form className="d-flex" onSubmit={(e) => { e.preventDefault(); }}>
                     <Form.Control
                       type="search"
                       placeholder="Search"
                       className="me-2"
-                      aria-label="Search"
+                      value={searchTerm}
+                      onChange={handleInputChange}
                     />
-                    <Button variant="outline-success">Search</Button>
+                    <Button onClick={handleSearch} variant="outline-success">Search</Button>
                   </Form>
                 </Offcanvas.Body>
               </Navbar.Offcanvas>
             </Container>
+
           </Navbar>
         ))}
+
+        <iframe
+          id="searchIframe"
+          title="Resultados de Búsqueda"
+          width={iframeSize.width}
+          height={iframeSize.height}
+          frameBorder="0"
+          src=""
+        ></iframe>
       </header>
       <Switch>
         <Route path='/publico'>
@@ -157,6 +191,30 @@ const MenuNavbar = () => {
         </Route>
         <Route path='/biblia'>
           <Biblia />
+        </Route>
+        <Route path='/historia' >
+
+        </Route>
+        <Route path='/conexion'>
+
+        </Route>
+        <Route path='/mision'>
+
+        </Route>
+        <Route path='/declaracion-de-fe'>
+
+        </Route>
+        <Route path='/principis-doctrinales'>
+          <PrincipiosDoctrinales />
+        </Route>
+        <Route path='/ge-junior'>
+
+        </Route>
+        <Route path='/ge-emergente'>
+
+        </Route>
+        <Route path='/ministerio-de-la-mujer'>
+
         </Route>
         <Route path="/upload">
           <Upload />

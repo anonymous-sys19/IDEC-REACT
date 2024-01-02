@@ -1,14 +1,15 @@
 /* eslint-disable no-undef */
+
 const AboutSection = () => {
-
     const ImgResponsiv = {
-
+    
         width: 'initial',
         height: '-webkit-fill-available',
         margin: 'unset',
         padding: '0.3rem',
-
+    
     }
+
 
     return (
         <section id="about">
@@ -42,7 +43,7 @@ const AboutSection = () => {
                         </li>
                     </div>
                 </div>
-                <div className="row">
+                <div className="row timelimeFather1">
                     <div className="col-lg-12">
                         <ul className="timeline">
                             <li>
