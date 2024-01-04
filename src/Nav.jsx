@@ -44,7 +44,9 @@ const MenuNavbar = () => {
     const iframe = document.getElementById('searchIframe');
     if (iframe) {
       // Actualiza el atributo src del iframe con la URL de búsqueda
-      iframe.src = `https://bible.knowing-jesus.com/Espa%C3%B1al/words/${searchTerm}`;
+      iframe.src = `https://www.bible.com/es/search/bible?query=${searchTerm}`;
+      // https://dailyverses.net/es/
+      // https://bible.knowing-jesus.com/Espa%C3%B1al/words/
 
       // Actualiza el tamaño del iframe después de realizar la búsqueda
       setIframeSize({ width: '100%', height: 600 });

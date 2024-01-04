@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unknown-property */
 import { useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet';
 import html2canvas from 'html2canvas';
@@ -50,6 +51,9 @@ const ServiceSection = () => {
                                 <script async defer src="https://dailyverses.net/get/verse.js?language=nvi"></script>
                             </Helmet>
                         </div>
+
+                        {/* <iframe width="500px" scrolling="no" height="400px" frameborder="0" src="https://www.bibliatodo.com/es/online/versiculo-del-dia"></iframe> */}
+
                     </div>
                 </div>
                 <div className="row text-center">
