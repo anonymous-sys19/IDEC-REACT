@@ -1,4 +1,4 @@
-# React + Vite
+# IIDEC
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
@@ -10,7 +10,7 @@ Currently, two official plugins are available:
 
 # IDEC
 Pagina en Desarrollo de Iglesia del evangelio completo
-<a href="https://iglesia-de-dios-finca-dos.onrender.com/">Enter</a>
+<a href="https://idec-react.vercel.app/">Enter</a>
 
 <div align="center">
 <img src="https://img.shields.io/badge/STATUS-EN%20DESAROLLO-green">
