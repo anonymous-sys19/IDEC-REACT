@@ -57,7 +57,7 @@ h6 {
     height: auto;
 }
 
-.container {
+.containerTeam {
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
@@ -98,7 +98,7 @@ h6 {
     left: 30%;
 }
 
-.row {
+.rowTeam {
     display: flex;
     flex-wrap: wrap;
     margin-right: -15px;
@@ -106,13 +106,14 @@ h6 {
     justify-content: space-between;
 }
 
-.column {
+.columnTeam {
     position: relative;
     width: 100%;
     padding-right: 15px;
     padding-left: 15px;
     flex: 0 0 100%;
     max-width: 100%;
+    
 }
 
 .team {
@@ -254,37 +255,37 @@ h6 {
 /* Mobile Responsive */
 
 @media (min-width: 576px) {
-    .container {
+    .containerTeam {
         max-width: 540px;
     }
 
-    .column {
+    .columnTeam {
         max-width: 50%;
     }
 }
 
 @media (min-width: 768px) {
-    .container {
+    .containerTeam {
         max-width: 720px;
     }
 
-    .column {
+    .columnTeam {
         max-width: 33.333333%;
     }
 }
 
 @media (min-width: 992px) {
-    .container {
+    .containerTeam {
         max-width: 960px;
     }
 
-    .column {
+    .columnTeam {
         max-width: 25%;
     }
 }
 
 @media (min-width: 1200px) {
-    .container {
+    .containerTeam {
         max-width: 1140px;
     }
 

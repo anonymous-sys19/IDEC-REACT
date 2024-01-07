@@ -31,7 +31,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
       <Router>
       <MenuNavbar />
-      
       </Router>
   </React.StrictMode>,
 )

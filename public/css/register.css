@@ -203,31 +203,41 @@ picture img {
     justify-content: center;
     align-items: center;
     align-content: center;
-    width: 400px;
-    height: 500px;
+    /* width: 400px; */
+    height: 450px;
+
+   
 
 
   & .cont-fom{
     border: 2px solid #87b2bf;
-    width: 350px;
-    height: 450px;
+    /* width: 350px; */
+    height: 530px;
     position: absolute;
+    width: -webkit-fill-available;
+    /* height: -webkit-fill-available; */
+    /* position: absolute; */
+    /* margin: 0 1rem; */
+    z-index: 2;
 
     & form{
-      width: 300px;
+      width: auto;
       height: 350px;
       display: grid;
       margin: 1rem auto;
-
     }
     
   }
 
   & picture img{
-    width: 300px;
+    width: auto;
     height: 350px;
-    z-index: -1;
-    position: relative;
+    z-index: 1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     margin: auto;
 
   }

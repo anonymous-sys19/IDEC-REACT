@@ -6,15 +6,15 @@ const TeamSection = () => {
 
     return (
 
-        <div className="container">
+        <div className="containerTeam">
             <div className="section-title">
                 <h1>Equipo de Lideres</h1>
             </div>
 
-            <div className="row">
+            <div className="rowTeam">
 
 
-                <div className="column">
+                <div className="columnTeam">
                     <div className="team">
                         <div className="team-img">
                             <img className='teamImg' src="/images/logo-idec.png" alt="Team Image" />
@@ -29,7 +29,7 @@ const TeamSection = () => {
                     </div>
                 </div>
 
-                <div className="column">
+                <div className="columnTeam">
                     <div className="team">
                         <div className="team-img">
                             <img className='teamImg' src="/images/logo-idec.png" alt="Team Image" />
@@ -44,7 +44,7 @@ const TeamSection = () => {
                     </div>
                 </div>
 
-                <div className="column">
+                <div className="columnTeam">
                     <div className="team">
                         <div className="team-img">
                             <img className='teamImg' src="/images/logo-idec.png" alt="Team Image" />
@@ -59,7 +59,7 @@ const TeamSection = () => {
                     </div>
                 </div>
 
-                <div className="column">
+                <div className="columnTeam">
                     <div className="team">
                         <div className="team-img">
                             <img className='teamImg' src="/images/logo-idec.png" alt="Team Image" />

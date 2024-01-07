@@ -126,7 +126,7 @@ export default function Publicaciones({ session }) {
         <>
 
             {imageList.map((image) => (
-                <div className="Public" key={image.name}>
+                <div className="Public container" key={image.name}>
                     <div className='public'>
                         <blockquote className="">
                             <span className="comment">
@@ -144,7 +144,7 @@ export default function Publicaciones({ session }) {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div>
+                                        <div className='treeePounts'>
                                             <span className='treeePount'> <FaEllipsisV /> </span>
 
                                         </div>
@@ -159,7 +159,7 @@ export default function Publicaciones({ session }) {
                                         </TextoConNegritaAutomatica>
                                     </li>
                                 </div>
-                                <hr size="1px" color="black" />
+                                {/* <hr size="1px" color="black" /> */}
                             </span>
                             <div className="container containerImg">
                                 <img className='imgPublic' src={image.url} alt={image.name} />
@@ -186,6 +186,7 @@ export default function Publicaciones({ session }) {
                         {isCommentVisible && (
                             <div className="comment-input-container">
                                 <input
+                                className='commentInput'
                                     type="text"
                                     placeholder="Escribe tu comentario..."
                                     value={comment}

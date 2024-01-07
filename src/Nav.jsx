@@ -16,6 +16,8 @@ import Publicaciones from './routes/publicaciones.jsx';
 import Perfil from './routes/profile.jsx';
 import Logout from './routes/Auth/Logout.jsx';
 import PrincipiosDoctrinales from './routes/QuienesSomos/PrincipiosDoctrinales.jsx';
+import DeclaracionDFe from './routes/QuienesSomos/declaracion-de-fe.jsx';
+
 
 import 'bootstrap/dist/css/bootstrap.min.css'; // Importa los estilos de Bootstrap
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Importa los scripts de Bootstrap
@@ -204,9 +206,9 @@ const MenuNavbar = () => {
 
         </Route>
         <Route path='/declaracion-de-fe'>
-
+              <DeclaracionDFe />
         </Route>
-        <Route path='/principis-doctrinales'>
+        <Route path='/principios-doctrinales'>
           <PrincipiosDoctrinales />
         </Route>
         <Route path='/ge-junior'>
