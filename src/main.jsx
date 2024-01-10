@@ -11,6 +11,8 @@ import '/public/css/sobreNosotros.css'
 import '/public/css/style.css'
 import '/public/css/index.css'
 import '/node_modules/animate.css/animate.css'
+import '/public/css/uploadFiles.css'
+
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import MenuNavbar from "./Nav.jsx";
