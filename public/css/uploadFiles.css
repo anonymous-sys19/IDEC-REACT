@@ -243,3 +243,27 @@
 }
 
 /**********End File Inputs**********/
+
+
+
+.ContainerUpload{
+    display: flex;
+    justify-content: center;
+    align-items: self-end;
+    /* max-width: auto;
+    min-width: 100px;
+    max-height: max-content;
+    min-height: 100px; */
+
+    && .TitleIdecUpload{
+        position: relative;
+        top: 6px;
+        left: -0.9rem;
+        
+        && h1{
+            color: #080263;
+            font-weight: 800;
+            font-family: 'Franklin Gothic Medium',;
+        }
+    }
+}

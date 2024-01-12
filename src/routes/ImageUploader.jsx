@@ -73,12 +73,17 @@ const Upload = () => {
     <article className="ArticleUpload" id='ArticleUpload'>
       <div className="container text-center">
         <div className="title py-5">
-          <img src="/images/logo-idec.png" style={{
-            width: '200px',
-            height: '200px',
+          <div className='ContainerUpload'>
+            <div>
+            <img src="/images/logo-idec.png" style={{
+            width: '65px',
+            height: '90px',
           }} alt="images" />
-          <h1>IDEC UPLOAD</h1>
-          <p className="subtitle">Upload Images to the <strong>Server</strong></p>
+            </div>
+            <div className='TitleIdecUpload'>
+              <h1>IDEC UPLOAD</h1>
+            </div>
+          </div>
         </div>
 
         <div className="">

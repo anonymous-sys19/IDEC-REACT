@@ -1,11 +1,10 @@
+
 function Logo() {
-  
 
   return (
     <>
-
       <div className="contLog">
-        <div>
+        <div >
           <img
             className="logoidecCola animate__animated animate__zoomInLeft"
             src="/images/logo-idec.png"
@@ -21,7 +20,7 @@ function Logo() {
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default Logo
+export default Logo;
