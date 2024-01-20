@@ -12,7 +12,7 @@ import '/public/css/style.css'
 import '/public/css/index.css'
 import '/node_modules/animate.css/animate.css'
 import '/public/css/uploadFiles.css'
-
+import { AuthContextProvider } from './routes/Auth/AuthContext.jsx'
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import MenuNavbar from "./Nav.jsx";
@@ -30,9 +30,11 @@ library.add(fab);
 
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  <AuthContextProvider>
+    <React.StrictMode>
       <Router>
       <MenuNavbar />
       </Router>
-  </React.StrictMode>,
+  </React.StrictMode>
+  </AuthContextProvider>
 )

@@ -9,12 +9,12 @@ import { useState, useEffect } from 'react';
 import TextoConNegritaAutomatica from '../components/NegritaAuto';
 
 import { supabase } from './Auth/supabaseClient';
-import UseProfile from '../hooks/useProfile';
+
 /* eslint-disable react/no-unknown-property */
 
-export default function Publicaciones({ session }) {
+export default function Publicaciones() {
     //Detect Nregita
-
+    
     const [comment, setComment] = useState('');
     const [isCommentVisible, setCommentVisible] = useState(false);
 
@@ -36,92 +36,67 @@ export default function Publicaciones({ session }) {
     } //
 
 
-    const [imageList, setImageList] = useState([]);
-    useEffect(() => {
-        const fetchImages = async () => {
-            try {
-                // Obtén la lista de archivos en tu bucket
-                const { data: fileData, error: fileError } = await supabase.storage.from('idec-public').list('images/');
+    const fetchImages = async () => {
+        try {
+            // Obtén la lista de archivos en tu bucket
+            const { data: fileData, error: fileError } = await supabase.storage.from('idec-public').list('images/');
 
-                if (fileError) {
-                    throw fileError;
+            if (fileError) {
+                throw fileError;
+            }
+
+
+            // Construye las URLs completas para cada imagen
+            const images = await Promise.all(fileData.map(async (file) => {
+                const encodedFileName = encodeURIComponent(file.name);
+                const url = `idec-public/images/${encodedFileName}`;
+                // const url = `/images/${encodeURIComponent(file.name)}`;
+
+                try {
+
+                    const { data: imageData, error: imageError } = await supabase
+                        .from('idectableimages')
+                        .select("user_id, description, created_at")
+                        .eq('url', url)
+                        .maybeSingle()
+
+                    if (imageError) {
+                        console.error('Error al obtener la información de la imagen:', imageError.message);
+                        return null;
+                    }
+                    //
+                    //
+
+
+                    return {
+                        name: file.name,
+                        url: `https://janbrtgwtomzffqqcmfo.supabase.co/storage/v1/object/public/idec-public/images/${file.name}`,
+                        uid: imageData?.user_id,
+                        description: imageData?.description,
+                        createdAt: imageData?.created_at,
+                    };
+
+                } catch (error) {
+                    console.error('Error al procesar la imagen:', error.message);
+                    return null;
                 }
 
 
-                // Construye las URLs completas para cada imagen
-                const images = await Promise.all(fileData.map(async (file) => {
-                    const encodedFileName = encodeURIComponent(file.name);
-                    const url = `idec-public/images/${encodedFileName}`;
-                    // const url = `/images/${encodeURIComponent(file.name)}`;
+            }))
+            // Filtra las imágenes nulas (aquellas con errores al obtener información desde la base de datos)
+            const filteredImages = images.filter((image) => image !== null);
 
-                    try {
-
-                        const { data: imageData, error: imageError } = await supabase
-                            .from('idectableimages')
-                            .select("user_id, description, created_at, useravatarurl")
-                            .eq('url', url)
-                            .maybeSingle()
-
-                        if (imageError) {
-                            console.error('Error al obtener la información de la imagen:', imageError.message);
-                            return null;
-                        }
-                        //
-
-                        try {
-                            const path = [{}]
-                            const { data: imageAvatar, error: avatarError } = await supabase.storage.from('avatars').download(path);
-                            if (avatarError) {
-                                throw avatarError;
-                            }
-                            const url = URL.createObjectURL(imageAvatar);
-                            console.log("Url For Image", url); // Llama a downloadImage cuando la URL del avatar está disponible
-                        } catch (error) {
-                            console.log('Error downloadingAvatar: ', error.message);
-                        }
-
-                        //
-
-
-                        return {
-                            name: file.name,
-                            url: `https://janbrtgwtomzffqqcmfo.supabase.co/storage/v1/object/public/idec-public/images/${file.name}`,
-                            uid: imageData?.user_id,
-                            description: imageData?.description,
-                            createdAt: imageData?.created_at,
-                            avatarUser: imageData?.useravatarurl,
-                        };
-
-                    } catch (error) {
-                        console.error('Error al procesar la imagen:', error.message);
-                        return null;
-                    }
-
-
-                }))
-                // Filtra las imágenes nulas (aquellas con errores al obtener información desde la base de datos)
-                const filteredImages = images.filter((image) => image !== null);
-
-                // Actualiza el estado con la lista de imágenes
-                setImageList(filteredImages);
-            } catch (error) {
-                console.error('Error al obtener la lista de imágenes:', error.message);
-            }
-        };
-
-        fetchImages();
-
-    }, []);
-
-    //Profile useEffect
-    const { loading, username, website, avatarUrl, downloadImage } = UseProfile()
-    //
-
-    useEffect(() => {
-        if (!loading && avatarUrl) {
-            downloadImage(avatarUrl); // Llama a downloadImage cuando el avatarUrl está disponible
+            // Actualiza el estado con la lista de imágenes
+            setImageList(filteredImages);
+        } catch (error) {
+            console.error('Error al obtener la lista de imágenes:', error.message);
         }
-    }, [loading, avatarUrl, downloadImage]);
+    };
+
+    fetchImages();
+    const [imageList, setImageList] = useState([]);
+   
+   
     return (
         <>
 
@@ -135,11 +110,17 @@ export default function Publicaciones({ session }) {
                                         <div>
                                             <div className='ProfileItems'>
                                                 <div>
-                                                    {image.avatarUser && <img src={avatarUrl} className='PublicAvatar' alt={image.uid} />}
-
+                                                    {/* {image.uid && <img src={avatarUrl} className='PublicAvatar' alt={image.uid} />} */}
+                                                    {image.uid && (
+                                                    // Llamada a UseProfile para obtener el avatar del usuario
+                                                        
+                                                            <img src={image.avatar_url} className='PublicAvatar' alt={image.uid} />
+                                                            )}
+                                                      
+                                                 
                                                 </div>
                                                 <div className='UserDate'>
-                                                    <a href='/perfil'>{username}</a>
+                                                    <a href='/perfil'>{image.avatar_url}</a>
                                                     <li className="date">{image.createdAt}</li>
                                                 </div>
                                             </div>
@@ -202,5 +183,8 @@ export default function Publicaciones({ session }) {
         </>
 
     )
-}
 
+
+
+  
+}

@@ -3,8 +3,8 @@
 /* eslint-disable no-undef */
 import '/public/css/publication.css'
 //Hooks
-import UseProfile from './hooks/useProfile.js';
-import { supabase } from './routes/Auth/supabaseClient.js';
+import { UserAuth } from './routes/Auth/AuthContext.jsx';
+// import { supabase } from './routes/Auth/supabaseClient.js';
 
 import Logo from './components/logo.jsx'
 import LogoNavMenu from './components/logoNavMenu.jsx';
@@ -19,6 +19,7 @@ import PrincipiosDoctrinales from './routes/QuienesSomos/PrincipiosDoctrinales.j
 import DeclaracionDFe from './routes/QuienesSomos/declaracion-de-fe.jsx';
 import Conexion2030 from './routes/QuienesSomos/conexion-20-30.jsx';
 // import RadioPlayer from './components/Radio.jsx';
+
 
 import 'bootstrap/dist/css/bootstrap.min.css'; // Importa los estilos de Bootstrap
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Importa los scripts de Bootstrap
@@ -36,9 +37,11 @@ import { useEffect, useState } from 'react';
 
 
 const MenuNavbar = () => {
-  const { loading, username, website, avatarUrl, downloadImage } = UseProfile()
-  const [session, setSession] = useState(null)
-  //
+  const { session, signout, user } = UserAuth();
+  // Verifica si hay una sesión
+  const isAuthenticated = user.email;
+ 
+  console.log(isAuthenticated);
 
   const [searchTerm, setSearchTerm] = useState('');
   const [iframeSize, setIframeSize] = useState({ width: 0, height: 0 });
@@ -62,27 +65,12 @@ const MenuNavbar = () => {
     // Actualiza el tamaño del iframe cuando cambia el input
     setIframeSize({ width: 0, height: 0 });
   };
-  //
-  useEffect(() => {
-    if (!loading && avatarUrl) {
-      downloadImage(avatarUrl); // Llama a downloadImage cuando el avatarUrl está disponible
-    }
-  }, [loading, avatarUrl, downloadImage]);
 
-  useEffect(() => {
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session)
-    })
 
-    supabase.auth.onAuthStateChange((_event, session) => {
-      setSession(session)
-    })
-  }, [])
-  // const RadioUrl = '/radio/Listen.pls'
   return (
+
     <BrowserRouter>
       <header>
-      {/* <RadioPlayer  plsUrl="https://centova.hostingtico.com:7016/index.html?sid=1" /> */}
         <Logo />
         {['xl'].map((expand) => (
           <Navbar key={expand} expand={expand} className="mb-3">
@@ -125,7 +113,7 @@ const MenuNavbar = () => {
                       <NavDropdown.Item href='/ministerio-de-la-mujer'>Ministerio de la Mujer</NavDropdown.Item>
                       <NavDropdown.Divider />
                     </NavDropdown>
-                    {session ? (
+                    { isAuthenticated ? (
                       <>
 
                         <NavDropdown
@@ -134,7 +122,7 @@ const MenuNavbar = () => {
                           drop={'start'}>
                           <NavDropdown.Item href='/Upload'>Upload </NavDropdown.Item>
                           <NavDropdown.Divider />
-                          <NavDropdown.Item href='/perfil'>Perfil </NavDropdown.Item>
+                          <NavDropdown.Item href='/perfil/s/'>Perfil </NavDropdown.Item>
                           <NavDropdown.Item href='/logout'>Logout</NavDropdown.Item>
                         </NavDropdown>
                         {['top'].map((placement) => (
@@ -143,13 +131,13 @@ const MenuNavbar = () => {
                             placement={placement}
                             overlay={
                               <Tooltip id={`tooltip-${placement}`}>
-                                Hello <strong>{username}</strong>.
+                                Hello <strong>{user?.name}</strong>.
                               </Tooltip>
                             }
                           >
                             {/* <Button variant="secondary">Tooltip on {placement}</Button> */}
                             <div className='profileNav'>
-                              {avatarUrl && <img className='imgNav' src={avatarUrl} alt={username} />}
+                              {user?.picture && <img className='imgNav' src={user?.picture} alt={user} />}
                             </div>
                           </OverlayTrigger>
                         ))}
@@ -182,7 +170,6 @@ const MenuNavbar = () => {
 
           </Navbar>
         ))}
-
         <iframe
           id="searchIframe"
           title="Resultados de Búsqueda"
@@ -192,6 +179,7 @@ const MenuNavbar = () => {
           src=""
         ></iframe>
       </header>
+
       <Switch>
         <Route path='/publico'>
           <Publicaciones />
@@ -223,11 +211,14 @@ const MenuNavbar = () => {
         <Route path='/ministerio-de-la-mujer'>
 
         </Route>
-        <Route path="/upload">
+        <Route path="/Upload">
           <Upload />
         </Route>
-        <Route path='/perfil'>
+        <Route path='/perfil/s/:userId'>
           <Perfil />
+        </Route>
+        <Route path='/perfil/s'>
+          <AppAuth />
         </Route>
         <Route path='/logout'>
           <Logout />
@@ -239,7 +230,9 @@ const MenuNavbar = () => {
           <Idec />
         </Route>
       </Switch>
+
     </BrowserRouter>
+
   )
 }
 
