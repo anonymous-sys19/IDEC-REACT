@@ -4,7 +4,13 @@ import { supabase } from './Auth/supabaseClient';
 
 import { FcUpload } from "react-icons/fc";
 
+import { SuccessNotification, ErrorNotification, WarningNotification } from '../hooks/HooksAlerts';
+
 const Upload = () => {
+
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [isError, setIsError] = useState(false);
+
   const [user, setUser] = useState()
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange(
@@ -24,15 +30,20 @@ const Upload = () => {
     };
   }, [])
 
-  console.log("UNO", user?.user_metadata?.name);
+
   const [image, setImage] = useState(null);
   const [description, setDescription] = useState('');
   const [nombreArchivo, setNombreArchivo] = useState('');
 
   const handleImageChange = (e) => {
     const nombreArchivo = e.target.files[0];
+    // Limpiar el nombre del archivo: reemplazar espacios con guiones bajos
+
+
+
     setImage(nombreArchivo);
-    setNombreArchivo(nombreArchivo)
+    setNombreArchivo(nombreArchivo);
+
 
   };
 
@@ -45,13 +56,14 @@ const Upload = () => {
   const handleUpload = async (e) => {
     e.preventDefault();
     if (!image) {
-      alert('Selecciona una imagen primero');
-      return;
+      return //<showSuccessNotification/> //FKJSQDFHE
     }
 
     try {
-      const { data, error } = await supabase.storage.from("idec-public").upload(`images/${image.name}`, image);
-      console.log('Datos de la imagen subida:', data);
+      // Limpiar el nombre del archivo: reemplazar espacios con guiones bajos
+      const cleanedFileName = image.name.replace(/\s/g, '_');
+
+      const { data, error } = await supabase.storage.from("idec-public").upload(`images/${cleanedFileName}`, image);
 
       if (error) {
         throw error;
@@ -61,7 +73,7 @@ const Upload = () => {
       const imageUrl = data.fullPath;
       console.log(imageUrl);
       if (!imageUrl) {
-        console.error('La URL de la imagen es nula.');
+        // console.error('La URL de la imagen es nula.');
         return;
       }
       // Ahora puedes almacenar la información asociada a la imagen en tu base de datos
@@ -89,10 +101,23 @@ const Upload = () => {
         throw imageError;
       }
 
-      alert('Imagen subida exitosamente');
+
+      // alert('Imagen subida exitosamente');
+
+
+      setIsSuccess(true);
+      setIsError(false);
+
+      setTimeout(() => {
+        // Restablece el estado después de 2 segundos
+        setIsSuccess(false);
+        setIsError(false);
+      }, 2000);
     } catch (error) {
-      console.error('Error al subir la imagen:', error.message);
-      alert('Error al subir la imagen');
+      // Si hay un error:
+      setIsError(true);
+      setIsSuccess(false);
+
     }
     setImage("")
     setNombreArchivo("")
@@ -158,9 +183,19 @@ const Upload = () => {
                           Compartir</button>
                       </li>
                     </div>
+
                   </div>
                 </div>
               </div>
+
+              {/* Condición para mostrar notificaciones */}
+              {isSuccess && (
+                <SuccessNotification message="Imagen subida exitosamente 😊" success={isSuccess} />
+              )}
+              {isError && (
+                <ErrorNotification message="Algo salió mal 😁" success={isError} />
+              )}
+
             </form>
           </div>
         </div>

@@ -24,7 +24,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';
-
+import 'toastify-js/src/toastify.css';
 library.add(fab);
 
 

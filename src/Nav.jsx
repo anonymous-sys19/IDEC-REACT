@@ -4,7 +4,6 @@
 import '/public/css/publication.css'
 //Hooks
 import { UserAuth } from './routes/Auth/AuthContext.jsx';
-// import { supabase } from './routes/Auth/supabaseClient.js';
 
 import Logo from './components/logo.jsx'
 import LogoNavMenu from './components/logoNavMenu.jsx';

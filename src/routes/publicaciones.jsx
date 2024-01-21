@@ -14,7 +14,7 @@ import { supabase } from './Auth/supabaseClient';
 
 export default function Publicaciones() {
     //Detect Nregita
-    
+
     const [comment, setComment] = useState('');
     const [isCommentVisible, setCommentVisible] = useState(false);
 
@@ -38,55 +38,50 @@ export default function Publicaciones() {
 
     const fetchImages = async () => {
         try {
-            // Obtén la lista de archivos en tu bucket
             const { data: fileData, error: fileError } = await supabase.storage.from('idec-public').list('images/');
 
             if (fileError) {
                 throw fileError;
             }
 
-
-            // Construye las URLs completas para cada imagen
             const images = await Promise.all(fileData.map(async (file) => {
                 const encodedFileName = encodeURIComponent(file.name);
                 const url = `idec-public/images/${encodedFileName}`;
-                // const url = `/images/${encodeURIComponent(file.name)}`;
 
                 try {
-
                     const { data: imageData, error: imageError } = await supabase
                         .from('idectableimages')
-                        .select("user_id, description, created_at")
+                        .select()
                         .eq('url', url)
-                        .maybeSingle()
+                        .maybeSingle();
 
-                    if (imageError) {
-                        console.error('Error al obtener la información de la imagen:', imageError.message);
-                        return null;
-                    }
-                    //
-                    //
+                    // if (imageError) {
+                    //     console.error('Error al obtener la información de la imagen:', imageError.message);
+                    //     return null;
+                    // }
 
+                    // Handle the case where imageData is null
+                    // if (!imageData) {
+                    //     console.log('No hay información para la imagen en la base de datos:', file.name);
+                    //     return null;
+                    // }
 
                     return {
                         name: file.name,
                         url: `https://janbrtgwtomzffqqcmfo.supabase.co/storage/v1/object/public/idec-public/images/${file.name}`,
-                        uid: imageData?.user_id,
-                        description: imageData?.description,
-                        createdAt: imageData?.created_at,
+                        uid: imageData.user_id,
+                        description: imageData.description,
+                        createdAt: imageData.created_at,
+                        avatar_url: imageData.avatarUrl,
+                        name_Username: imageData.nameUser,
                     };
-
                 } catch (error) {
                     console.error('Error al procesar la imagen:', error.message);
                     return null;
                 }
+            }));
 
-
-            }))
-            // Filtra las imágenes nulas (aquellas con errores al obtener información desde la base de datos)
             const filteredImages = images.filter((image) => image !== null);
-
-            // Actualiza el estado con la lista de imágenes
             setImageList(filteredImages);
         } catch (error) {
             console.error('Error al obtener la lista de imágenes:', error.message);
@@ -95,12 +90,12 @@ export default function Publicaciones() {
 
     fetchImages();
     const [imageList, setImageList] = useState([]);
-   
-   
+    // console.log(imageList);
+
     return (
         <>
 
-            {imageList.map((image) => (
+            {imageList.map((image) =>
                 <div className="Public container" key={image.name}>
                     <div className='public'>
                         <blockquote className="">
@@ -110,17 +105,11 @@ export default function Publicaciones() {
                                         <div>
                                             <div className='ProfileItems'>
                                                 <div>
-                                                    {/* {image.uid && <img src={avatarUrl} className='PublicAvatar' alt={image.uid} />} */}
-                                                    {image.uid && (
-                                                    // Llamada a UseProfile para obtener el avatar del usuario
-                                                        
-                                                            <img src={image.avatar_url} className='PublicAvatar' alt={image.uid} />
-                                                            )}
-                                                      
-                                                 
+                                                    <img src={image.avatar_url} className='PublicAvatar' alt={image.avatar_url} />
+
                                                 </div>
                                                 <div className='UserDate'>
-                                                    <a href='/perfil'>{image.avatar_url}</a>
+                                                    <a href='/perfil'>{image.name_Username}</a>
                                                     <li className="date">{image.createdAt}</li>
                                                 </div>
                                             </div>
@@ -143,7 +132,7 @@ export default function Publicaciones() {
                                 {/* <hr size="1px" color="black" /> */}
                             </span>
                             <div className="container containerImg">
-                                <img className='imgPublic' src={image.url} alt={image.name} />
+                                <img className='imgPublic' src={image.url} alt={image.url} />
 
                             </div>
                         </blockquote>
@@ -167,7 +156,7 @@ export default function Publicaciones() {
                         {isCommentVisible && (
                             <div className="comment-input-container">
                                 <input
-                                className='commentInput'
+                                    className='commentInput'
                                     type="text"
                                     placeholder="Escribe tu comentario..."
                                     value={comment}
@@ -178,7 +167,8 @@ export default function Publicaciones() {
                         )}
                     </div>
                 </div>
-            ))}
+            )}
+
 
         </>
 
@@ -186,5 +176,5 @@ export default function Publicaciones() {
 
 
 
-  
+
 }
