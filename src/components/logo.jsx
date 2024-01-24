@@ -7,7 +7,7 @@ function Logo() {
         <div >
           <img
             className="logoidecCola animate__animated animate__zoomInLeft"
-            src="/images/logo-idec.png"
+            src="/SVG/logo-idec.svg"
             width="100px"
             alt="logo"
           />
