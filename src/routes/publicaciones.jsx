@@ -3,12 +3,13 @@
 /* eslint-disable no-unused-vars */
 import { FaEllipsisV } from 'react-icons/fa';
 import { AiTwotoneMessage } from "react-icons/ai";
-import { FaShare } from "react-icons/fa6";
+import { FaShare, FaUser } from "react-icons/fa6";
 import { AiTwotoneLike } from "react-icons/ai";
 import { useState, useEffect } from 'react';
 import TextoConNegritaAutomatica from '../components/NegritaAuto';
 
 import { supabase } from './Auth/supabaseClient';
+import { daysToWeeks, hoursToSeconds, monthsToYears, weeksToDays, yearsToMonths } from 'date-fns';
 
 /* eslint-disable react/no-unknown-property */
 
@@ -88,7 +89,10 @@ export default function Publicaciones() {
         }
     };
 
-    fetchImages();
+    useEffect(() => {
+        fetchImages()
+
+    }, []);
     const [imageList, setImageList] = useState([]);
     // console.log(imageList);
 
@@ -105,12 +109,21 @@ export default function Publicaciones() {
                                         <div>
                                             <div className='ProfileItems'>
                                                 <div>
-                                                    <img src={image.avatar_url} className='PublicAvatar' alt={image.avatar_url} />
+                                                    {image.avatar_url  ? (
+
+
+                                                        <img src={image.avatar_url} className='PublicAvatar' />
+                                                    ) : (
+
+                                                       <FaUser className='PublicAvatar'/>
+                                                    )
+                                                    }
+
 
                                                 </div>
                                                 <div className='UserDate'>
                                                     <a href='/perfil'>{image.name_Username}</a>
-                                                    <li className="date">{image.createdAt}</li>
+                                                    <li className="date">{new Date(image.createdAt).toUTCString().replace('GMT', '')}</li>
                                                 </div>
                                             </div>
                                         </div>

@@ -1,17 +1,24 @@
 // src/components/ImageUploader.jsx
 import { useEffect, useState } from 'react';
 import { supabase } from './Auth/supabaseClient';
-
+import { UserAuth } from './Auth/AuthContext';
 import { FcUpload } from "react-icons/fc";
 
 import { SuccessNotification, ErrorNotification, WarningNotification } from '../hooks/HooksAlerts';
 
 const Upload = () => {
 
+  const { session, signout, user } = UserAuth();
+  // Verifica si hay una sesión
+  const isAuthenticated = user.email;
+
+
+  console.log(isAuthenticated);
+
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  const [user, setUser] = useState()
+  const [OneUser, setUser] = useState()
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange(
       async (event, session) => {
@@ -85,10 +92,10 @@ const Upload = () => {
             {
               url: imageUrl,
               description,
-              user_id: user?.id,
-              email: user?.email,
-              nameUser: user?.user_metadata?.name,
-              avatarUrl: user?.user_metadata?.avatar_url,
+              user_id: OneUser?.id,
+              email: OneUser?.email,
+              nameUser: OneUser?.user_metadata?.name,
+              avatarUrl: OneUser?.user_metadata?.avatar_url,
 
 
 
@@ -122,7 +129,15 @@ const Upload = () => {
     setImage("")
     setNombreArchivo("")
     setDescription("#TiemposDeGloria")
+
+
   };
+  // if (isAuthenticated) {
+  //   handleUpload()
+  // }
+  // else {
+  //   <WarningNotification message={"No has iniciado session😑"} />
+  // }
 
 
   return (
@@ -148,9 +163,8 @@ const Upload = () => {
               // action="/Upload"
               encType="multipart/form-data"
               // method="post"
-              onSubmit={handleUpload}
-              className='formUploads'
-            >
+              onSubmit={handleUpload}>
+
               <div className="">
                 <div className="" style={{
 
@@ -175,12 +189,23 @@ const Upload = () => {
                     </div>
                     <div className="colB">
                       <li style={{ listStyle: 'none' }}>
-                        <button
-                          className="btn btn-warning"
-                          type='submit'
-                        >
-                          <FcUpload />
-                          Compartir</button>
+
+                        {isAuthenticated ? (
+                          <button
+                            className="btn btn-warning"
+                            type='submit'
+                          >
+                            <FcUpload />
+                            Compartir</button>
+                        ) : (
+                          <a
+                            className="btn btn-warning"
+                            href='/login'
+                          >
+                            <FcUpload />
+                            Inicia session</a>
+                        )}
+
                       </li>
                     </div>
 
