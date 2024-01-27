@@ -1,8 +1,9 @@
 
 input[type=text],
-input[type=password] {
+input[type=password],
+textarea {
   width: 100%;
-  padding: 12px 20px;
+  padding: 10px 20px;
   margin: 8px 0;
   display: inline-block;
   border: 1.5px solid #87b2bf;
@@ -18,7 +19,8 @@ input[type=password] {
 
 }
 /* placeholder is title undered3 input */
-input::placeholder {
+input::placeholder,
+textarea::placeholder {
   font-weight: bold;
   opacity: 0.5;
   color: #87b2bf;
@@ -54,10 +56,6 @@ button:hover {
 img.avatar {
   width: 40%;
   border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
 }
 
 .container {

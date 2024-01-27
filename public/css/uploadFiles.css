@@ -4,26 +4,20 @@
     display: flex;
     justify-content: start;
     align-items: center;
-    padding: 0 0.4rem;
+    padding: 0 0.4rem 0 0;
 
     && div {
         margin: 0 0.2rem;
-        max-width: 50%;
+        max-width: 100%;
     }
 
+    && .btn {
+        border: 1px solid rgba(0, 0, 0, 0.218);
+    }
 
 }
 
 
-@media screen and (min-width: 800px) {
-   
-    
-    .input-Description {
-        width: -webkit-fill-available;
-        /* max-width: 100%; */
-    }
-  
-}
 .changeImage figure {
     margin: auto;
 }
@@ -54,4 +48,75 @@
     display: inline-block;
     overflow: hidden;
     padding: 0.625rem 1.25rem;
+}
+
+.input-Description {
+    /* width: -webkit-fill-available; */
+    width: 70%;
+}
+
+.btn-btnChanges {
+    display: flex;
+    align-items: center;
+}
+
+.cont-img-Change {
+    display: flex;
+    justify-content: unset;
+    /* width: auto; */
+    margin: auto;
+
+    && img {
+        height: auto;
+        max-width: 100%;
+        margin: auto;
+    }
+
+    && .btn-clear {
+        width: max-content;
+        position: absolute;
+        background: #ffe02e;
+        display: flex;
+        padding: 0.3rem;
+        color: rgba(255, 46, 46, 0.886);
+    }
+}
+
+
+@media screen and (max-width: 800px) {}
+
+@media screen and (max-width: 380px) {
+
+    .container-items {
+        display: block;
+        justify-content: start;
+        align-items: center;
+        padding: 0 0.4rem 0 0;
+
+        && div {
+            margin: 0 0.2rem;
+            max-width: 100%;
+        }
+    }
+
+    .container-Upload {
+        display: flex;
+        justify-content: end;
+        position: relative;
+        top: 3rem;
+        right: -0.5rem;
+    }
+
+    .input-Description {
+        width: -webkit-fill-available;
+        /* max-width: 90%; */
+    }
+
+    .btn-btnChanges {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row-reverse;
+    }
+
 }

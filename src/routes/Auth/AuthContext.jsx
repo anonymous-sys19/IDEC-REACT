@@ -1,54 +1,4 @@
 /* eslint-disable react/prop-types */
-// import { useState, useEffect, createContext, useContext } from 'react';
-// import { supabase } from './supabaseClient';
-
-// const AuthContext = createContext();
-
-// const AuthProvider = ({ children }) => {
-//     const [session, setSession] = useState(null);
-
-//     useEffect(() => {
-//         const fetchData = async () => {
-//             const userSession = await supabase.auth.getSession();
-//             setSession(userSession);
-//         };
-
-//         fetchData();
-//         const callback = (event, session) => {
-//             // Manejar el cambio en el estado de autenticación aquí
-//             console.log('Cambio en el estado de autenticación:', event, session);
-//         };
-
-//         const { data: { authListener } } = supabase.auth.onAuthStateChange(callback)
-
-//         return () => {
-//             // Llamamos a la función devuelta por onAuthStateChange para cancelar la suscripción.
-//             authListener.unsuscribe()
-//         };
-//     }, []);
-
-
-//     const updateSession = (newSession) => {
-//         setSession(newSession);
-//     };
-
-//     return (
-//         <AuthContext.Provider value={{ session, updateSession }}>
-//             {children}
-//         </AuthContext.Provider>
-//     );
-// };
-
-// const useAuth = () => {
-//     const context = useContext(AuthContext);
-//     if (!context) {
-//         throw new Error('useAuth must be used within an AuthProvider');
-//     }
-//     return context;
-// };
-
-// // eslint-disable-next-line react-refresh/only-export-components
-// export { AuthProvider, useAuth };
 
 
 import { createContext, useContext, useEffect, useState } from "react";
@@ -77,15 +27,16 @@ export const AuthContextProvider = ({ children }) => {
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange(
       async (event, session) => {
-        console.log("supabase event: ", event);
+        // console.log("supabase event: ", event);
         if (session == null) {
-          console.log('No hay Session');
+          // console.log('No hay Session');
 
         }
         else {
           setUser(session?.user.user_metadata);
+          // eslint-disable-next-line no-unused-vars
           const { user } = session;
-          console.log(user);
+          // console.log(user);
         }
       }
     );

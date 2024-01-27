@@ -14,7 +14,7 @@
 
 }
 #root{
-  width: inherit;
+  /* width: inherit; */
   background: #fefeff;
 }
 body {

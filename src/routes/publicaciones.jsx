@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
 /* eslint-disable no-unused-vars */
 import { FaEllipsisV } from 'react-icons/fa';
@@ -9,7 +8,6 @@ import { useState, useEffect } from 'react';
 import TextoConNegritaAutomatica from '../components/NegritaAuto';
 
 import { supabase } from './Auth/supabaseClient';
-import { daysToWeeks, hoursToSeconds, monthsToYears, weeksToDays, yearsToMonths } from 'date-fns';
 
 /* eslint-disable react/no-unknown-property */
 
@@ -56,16 +54,6 @@ export default function Publicaciones() {
                         .eq('url', url)
                         .maybeSingle();
 
-                    // if (imageError) {
-                    //     console.error('Error al obtener la información de la imagen:', imageError.message);
-                    //     return null;
-                    // }
-
-                    // Handle the case where imageData is null
-                    // if (!imageData) {
-                    //     console.log('No hay información para la imagen en la base de datos:', file.name);
-                    //     return null;
-                    // }
 
                     return {
                         name: file.name,
@@ -98,91 +86,92 @@ export default function Publicaciones() {
 
     return (
         <>
+            <article>
 
-            {imageList.map((image) =>
-                <div className="Public container" key={image.name}>
-                    <div className='public'>
-                        <blockquote className="">
-                            <span className="comment">
-                                <div className="">
-                                    <div className='dateIcons'>
-                                        <div>
-                                            <div className='ProfileItems'>
-                                                <div>
-                                                    {image.avatar_url  ? (
-
-
-                                                        <img src={image.avatar_url} className='PublicAvatar' />
-                                                    ) : (
-
-                                                       <FaUser className='PublicAvatar'/>
-                                                    )
-                                                    }
+                {imageList.map((image) =>
+                    <div className="Public container" key={image.name}>
+                        <div className='public'>
+                            <blockquote className="">
+                                <span className="comment">
+                                    <div className="">
+                                        <div className='dateIcons'>
+                                            <div>
+                                                <div className='ProfileItems'>
+                                                    <div>
+                                                        {image.avatar_url ? (
 
 
-                                                </div>
-                                                <div className='UserDate'>
-                                                    <a href='/perfil'>{image.name_Username}</a>
-                                                    <li className="date">{new Date(image.createdAt).toUTCString().replace('GMT', '')}</li>
+                                                            <img src={image.avatar_url} className='PublicAvatar' />
+                                                        ) : (
+
+                                                            <FaUser className='PublicAvatar' />
+                                                        )
+                                                        }
+
+
+                                                    </div>
+                                                    <div className='UserDate'>
+                                                        <a href='/perfil'>{image.name_Username}</a>
+                                                        <li className="date">{new Date(image.createdAt).toUTCString().replace('GMT', '')}</li>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                        <div className='treeePounts'>
-                                            <span className='treeePount'> <FaEllipsisV /> </span>
+                                            <div className='treeePounts'>
+                                                <span className='treeePount'> <FaEllipsisV /> </span>
+
+                                            </div>
 
                                         </div>
 
                                     </div>
+                                    <div className='PublicComment container'>
+                                        <li className='commentPublic'>
+                                            <TextoConNegritaAutomatica>
+                                                {image.description}
+                                            </TextoConNegritaAutomatica>
+                                        </li>
+                                    </div>
+                                    {/* <hr size="1px" color="black" /> */}
+                                </span>
+                                <div className="container containerImg">
+                                    <img className='imgPublic' src={image.url} alt={image.url} />
 
                                 </div>
-                                <div className='PublicComment container'>
-                                    <li className='commentPublic'>
-                                        <TextoConNegritaAutomatica>
-                                            {image.description}
-                                        </TextoConNegritaAutomatica>
-                                    </li>
+                            </blockquote>
+                            <hr size="2px" color="black" />
+                            <div className='checks'>
+                                <div className='like'>
+                                    <button onClick={() => {
+                                        alert(true)
+                                    }}> <AiTwotoneLike /> Like</button>
                                 </div>
-                                {/* <hr size="1px" color="black" /> */}
-                            </span>
-                            <div className="container containerImg">
-                                <img className='imgPublic' src={image.url} alt={image.url} />
-
+                                <div className="comment">
+                                    <button onClick={handleCommentClick}> <AiTwotoneMessage /> Coment</button>
+                                </div>
+                                <div className="share">
+                                    <button onClick={() => {
+                                        alert(true)
+                                    }}> <FaShare /> Compartir</button>
+                                </div>
                             </div>
-                        </blockquote>
-                        <hr size="2px" color="black" />
-                        <div className='checks'>
-                            <div className='like'>
-                                <button onClick={() => {
-                                    alert(true)
-                                }}> <AiTwotoneLike /> Like</button>
-                            </div>
-                            <div className="comment">
-                                <button onClick={handleCommentClick}> <AiTwotoneMessage /> Coment</button>
-                            </div>
-                            <div className="share">
-                                <button onClick={() => {
-                                    alert(true)
-                                }}> <FaShare /> Compartir</button>
-                            </div>
+                            <hr size="2px" color="black" />
+                            {isCommentVisible && (
+                                <div className="comment-input-container">
+                                    <input
+                                        className='commentInput'
+                                        type="text"
+                                        placeholder="Escribe tu comentario..."
+                                        value={comment}
+                                        onChange={handleInputChange}
+                                        onKeyPress={hanldeEnterPress}
+                                    />
+                                </div>
+                            )}
                         </div>
-                        <hr size="2px" color="black" />
-                        {isCommentVisible && (
-                            <div className="comment-input-container">
-                                <input
-                                    className='commentInput'
-                                    type="text"
-                                    placeholder="Escribe tu comentario..."
-                                    value={comment}
-                                    onChange={handleInputChange}
-                                    onKeyPress={hanldeEnterPress}
-                                />
-                            </div>
-                        )}
                     </div>
-                </div>
-            )}
+                )}
 
-
+            </article>
         </>
 
     )

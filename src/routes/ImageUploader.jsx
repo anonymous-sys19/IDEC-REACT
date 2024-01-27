@@ -5,6 +5,7 @@ import { supabase } from './Auth/supabaseClient';
 import { UserAuth } from './Auth/AuthContext';
 import { FcUpload } from "react-icons/fc";
 import { FaImages } from "react-icons/fa";
+import { AiFillDelete } from 'react-icons/ai';
 
 // eslint-disable-next-line no-unused-vars
 import { SuccessNotification, ErrorNotification, WarningNotification } from '../hooks/HooksAlerts';
@@ -16,7 +17,7 @@ const Upload = () => {
   const isAuthenticated = user.email;
 
 
-  console.log(isAuthenticated);
+  // console.log(isAuthenticated);
 
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -25,9 +26,9 @@ const Upload = () => {
   useEffect(() => {
     const { data: authListener } = supabase.auth.onAuthStateChange(
       async (event, session) => {
-        console.log("supabase event: ", event);
+        // console.log("supabase event: ", event);
         if (session == null) {
-          console.log('No hay Session');
+          // console.log('No hay Session');
 
         }
         else {
@@ -41,18 +42,39 @@ const Upload = () => {
   }, [])
 
 
-  const [image, setImage] = useState(null);
+  const [image, setImage] = useState([]);
+  const [imageViews, setImageViews] = useState([])
   const [description, setDescription] = useState('');
   // eslint-disable-next-line no-unused-vars
   const [nombreArchivo, setNombreArchivo] = useState('');
 
+  // const handleImageChange = (e) => {
+  //   const nombreArchivo = e.target.files[0];
+
+  //   setImage(nombreArchivo);
+  //   setNombreArchivo(nombreArchivo);
+  //   setImageViews(URL.createObjectURL(nombreArchivo))
+
+
+  // };
+
   const handleImageChange = (e) => {
-    const nombreArchivo = e.target.files[0];
-    // Limpiar el nombre del archivo: reemplazar espacios con guiones bajos
+    const nuevosArchivos = e.target.files;
 
-    setImage(URL.createObjectURL(nombreArchivo));
-    setNombreArchivo(nombreArchivo);
+    // const nuevosArchivos = e.target.files;
 
+    // Actualizar el array de imágenes
+    setImage((prevImages) => [...prevImages, ...nuevosArchivos]);
+    // Actualizar el array de vistas previas de imágenes
+    const nuevasVistas = Array.from(nuevosArchivos).map((archivo) =>
+      URL.createObjectURL(archivo)
+    );
+    setImageViews((prevViews) => [...prevViews, ...nuevasVistas]);
+    // Actualizar el array de nombres de archivos
+    setNombreArchivo((prevNombres) => [
+      ...prevNombres,
+      ...Array.from(nuevosArchivos, (archivo) => archivo.name),
+    ]);
 
   };
 
@@ -61,75 +83,130 @@ const Upload = () => {
     setDescription(e.target.value);
   };
 
+  const handleRemove = (index) => {
+    // setImage()
+    // setDescription("#Tiempos de Gloria")
+    // Eliminar la imagen del array de imágenes
+    setImage((prevImages) => {
+      const newImages = [...prevImages];
+      newImages.splice(index, 1);
+      return newImages;
+    });
+
+    // Actualizar el array de vistas previas y nombres de archivos
+    setImageViews((prevViews) => {
+      const newViews = [...prevViews];
+      newViews.splice(index, 1);
+      return newViews;
+    });
+    setNombreArchivo((prevNombres) => {
+      const newNombres = [...prevNombres];
+      newNombres.splice(index, 1);
+      return newNombres;
+    });
+
+
+  }
+  // const cleanedFileName = image[0]?.map((file, index) => {
+  //   const cleanedImages = file.name.replace(/\s/g, '_');
+  //   console.log(`Archivo ${index + 1}:`, cleanedFileName);
+  //   // Realiza aquí cualquier operación que necesites con el objeto File
+  //   return { ...file, cleanedImages }; // Esto es necesario en una función map
+  // });
+
+
 
   const handleUpload = async (e) => {
     e.preventDefault();
-    if (!image) {
-      return //<showSuccessNotification/> //FKJSQDFHE
+    if (!image || image.length === 0) {
+      return; //<showSuccessNotification/> //FKJSQDFHE
     }
-
     try {
       // Limpiar el nombre del archivo: reemplazar espacios con guiones bajos
-      const cleanedFileName = image.name.replace(/\s/g, '_');
+      // const cleanedFileName = image.name.replace(/\s/g, '_');
 
-      const { data, error } = await supabase.storage.from("idec-public").upload(`images/${cleanedFileName}`, image);
+      const cleanedImages = image.map((file, index) => {
+        const cleanedFileName = file.name.replace(/\s/g, '_');
+        console.log(`Archivo ${index + 1}:`, cleanedFileName);
+        // return { ...file, cleanedFileName };
 
-      if (error) {
-        throw error;
-      }
+        // Añadir el tipo MIME al objeto File
+        const newFile = new File([file], cleanedFileName, { type: file.type });
 
-      // Obten la URL de la imagen subida
-      const imageUrl = data.fullPath;
-      console.log(imageUrl);
-      if (!imageUrl) {
-        // console.error('La URL de la imagen es nula.');
-        return;
-      }
-      // Ahora puedes almacenar la información asociada a la imagen en tu base de datos
-      // eslint-disable-next-line no-unused-vars
-      const { data: imageData, error: imageError } = await supabase
-        .from("idectableimages")
-        .upsert(
-          [
-            {
-              url: imageUrl,
-              description,
-              user_id: OneUser?.id,
-              email: OneUser?.email,
-              nameUser: OneUser?.user_metadata?.name,
-              avatarUrl: OneUser?.user_metadata?.avatar_url,
+        return newFile;
+      });
+
+      // console.log(cleanedFileName);
+      // const { data, error } = await supabase.storage.from("idec-public").upload(`images/${cleanedFileName}`, image);
+
+      // if (error) {
+      //   throw error;
+      // }
+      console.log("Name",cleanedImages);
+      console.log("Name.nme", cleanedImages.name);
+      for (const cleanedImage of cleanedImages) {
+        const { data, error } = await supabase.storage.from("idec-public").upload(`images/${cleanedImage.name}`, cleanedImage);
+
+        if (error) {
+          throw error;
+        }
+
+        // Resto de la lógica para almacenar información asociada a la imagen en la base de datos
+
+        // Obten la URL de la imagen subida
+        const imageUrl = data.fullPath;
+        // console.log(imageUrl);
+        if (!imageUrl) {
+          // console.error('La URL de la imagen es nula.');
+          return;
+        }
+        // Ahora puedes almacenar la información asociada a la imagen en tu base de datos
+        // eslint-disable-next-line no-unused-vars
+        const { data: imageData, error: imageError } = await supabase
+          .from("idectableimages")
+          .upsert(
+            [
+              {
+                url: imageUrl,
+                description,
+                user_id: OneUser?.id,
+                email: OneUser?.email,
+                nameUser: OneUser?.user_metadata?.name,
+                avatarUrl: OneUser?.user_metadata?.avatar_url,
 
 
 
-            }
-          ],
-          { onConflict: ['url'] }
-        );
+              }
+            ],
+            { onConflict: ['url'] }
+          );
 
-      if (imageError) {
-        throw imageError;
-      }
-
-
-      // alert('Imagen subida exitosamente');
+        if (imageError) {
+          throw imageError;
+        }
 
 
-      setIsSuccess(true);
-      setIsError(false);
+        // alert('Imagen subida exitosamente');
 
-      setTimeout(() => {
-        // Restablece el estado después de 2 segundos
-        setIsSuccess(false);
+
+        setIsSuccess(true);
         setIsError(false);
-      }, 2000);
+
+        setTimeout(() => {
+          // Restablece el estado después de 2 segundos
+          setIsSuccess(false);
+          setIsError(false);
+        }, 2000);
+      }
     } catch (error) {
       // Si hay un error:
+      console.log(error);
       setIsError(true);
       setIsSuccess(false);
 
     }
-    setImage("")
-    setNombreArchivo("")
+    setImage([""])
+    setNombreArchivo([""])
     setDescription("#TiemposDeGloria")
 
 
@@ -139,19 +216,7 @@ const Upload = () => {
   return (
     <article className="ArticleUpload" id='ArticleUpload'>
       <div className="text-center">
-        {/* <div className="title py-5">
-          <div className='ContainerUpload'>
-            <div>
-              <img src="/images/logo-idec.png" style={{
-                width: '65px',
-                height: '90px',
-              }} alt="images" />
-            </div>
-            <div className='TitleIdecUpload'>
-              <h1>IDEC UPLOAD</h1>
-            </div>
-          </div>
-        </div> */}
+       
 
         <div className="">
           <div className="cont-Form">
@@ -176,37 +241,39 @@ const Upload = () => {
 
                 </div>
                 <div className='input-Description'>
-                  <input type="text" placeholder={"¿Que estás pensando, " + user.name + "?"} value={description} onChange={handleDescriptionChange} />
-
+                  {/* <input type='text'  /> */}
+                  <textarea cols={40} rows='1' placeholder={"¿Que estás pensando, " + user.name + "?"} value={description} onChange={handleDescriptionChange} />
                 </div>
-                <div className='changeImage'>
-                  <input onChange={handleImageChange} accept='image/*' type="file" name="file-5" id="file-5" className="inputfile inputfile-5" required multiple />
-                  <label htmlFor="file-5">
-                    <figure>
-                      <FaImages className='iborrainputfile' />
+                <div className='btn-btnChanges'>
+                  <div className='changeImage'>
+                    <input onChange={handleImageChange} accept='image/*' type="file" name="file-5" id="file-5" className="inputfile inputfile-5" required multiple />
+                    <label htmlFor="file-5">
+                      <figure>
+                        <FaImages className='iborrainputfile' />
 
-                    </figure>
-                    {/* <span className="iborrainputfile">{nombreArchivo.name || ''}</span> */}
-                  </label>
+                      </figure>
+                      {/* <span className="iborrainputfile">{nombreArchivo.name || ''}</span> */}
+                    </label>
 
-                </div>
-                <div className="btn-share">
-                  <li style={{ listStyle: 'none' }}>
+                  </div>
+                  <div className="btn-share">
+                    <li style={{ listStyle: 'none' }}>
 
-                    {nombreArchivo ? (
-                      isAuthenticated ? (
-                        <button className="btn btn-success" type='submit'>
-                          <FcUpload />  Share
-                        </button>
+                      {nombreArchivo ? (
+                        isAuthenticated ? (
+                          <button className="btn" type='submit'>
+                            <FcUpload />
+                          </button>
+                        ) : (
+                          <a className="btn" style={{ color: 'blue', }} href='/register'>
+                            Login
+                          </a>
+                        )
                       ) : (
-                        <a className="btn" style={{ color: 'blue', }} href='/register'>
-                          Login
-                        </a>
-                      )
-                    ) : (
-                      ""
-                    )}
-                  </li>
+                        ""
+                      )}
+                    </li>
+                  </div>
                 </div>
               </div>
 
@@ -227,14 +294,32 @@ const Upload = () => {
         </div>
         <div className='row'>
           <div className="col">
-            <div>
-              {nombreArchivo ? (
-                <img className='iborrainputfile' src={image} style={{
-                  widows: 'auto',
-                  height: '-webkit-fit-content'
-                }} />) : ""}
+            {imageViews.map((url, index) => (
 
-            </div>
+              // eslint-disable-next-line react/jsx-key
+              <div className='container cont-img-Change'>
+                {imageViews[index] && (
+                  <>
+                    <div key={index} >
+
+                      <span onClick={() => handleRemove(index)} className='btn-clear'>
+                        <AiFillDelete />
+                      </span>
+
+                      <img className='iborrainputfile' src={url} style={{
+                        widows: 'auto',
+                        height: '-webkit-fit-content'
+                      }} alt={`Imagen ${index}`} />
+                    </div>
+
+
+                  </>
+                )}
+
+              </div>
+
+            ))}
+
           </div>
         </div>
 

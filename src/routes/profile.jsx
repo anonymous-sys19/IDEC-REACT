@@ -1,36 +1,56 @@
+/* eslint-disable react/prop-types */
+// UserList.js
 import { useEffect, useState } from 'react';
-import { UserAuth } from './Auth/AuthContext';
+import {supabase} from '../routes/Auth/supabaseClient'
 
-const UserProfile = () => {
-  const { user } = UserAuth(); // Obtener el usuario del contexto de autenticación
-  const [profileData, setProfileData] = useState(null);
+// Importa las dependencias necesarias
+
+import { useParams } from 'react-router-dom';  // Importa 'useParams' de react-router-dom
+
+const Perfil = () => {
+  const { userId } = useParams();  // Obtén el 'userId' de los parámetros de la URL
+  const [userData, setUserData] = useState(null);
 
   useEffect(() => {
-    if (user) {
-      // Aquí puedes hacer cualquier solicitud adicional para obtener información del perfil
-      // Puedes usar Supabase o cualquier otro medio para obtener datos adicionales del usuario
-      // En este ejemplo, simplemente configuramos la información del perfil basándonos en los datos del usuario
-      setProfileData({
-        name: user.full_name,
-        email: user.email,
-        avatar: user.avatar_url,
-      });
+    const fetchUserProfile = async () => {
+      try {
+        // Realizar la consulta a la tabla 'public.Users' con la condición 'WHERE id = userId'
+        const { data, error } = await supabase
+          .from('idectableimages')
+          .select('*')
+          .eq('id', userId);
+
+        if (error) {
+          throw error;
+        }
+
+        setUserData(data[0]);  // Supongo que solo esperas un usuario, por lo que tomo el primer elemento del array
+      } catch (error) {
+        console.error('Error al recuperar el perfil del usuario:', error.message);
+      }
+    };
+
+    if (userId) {
+      fetchUserProfile();
     }
-  }, [user]); // Se ejecutará cada vez que el usuario cambie
+  }, [userId]);
+
+  if (!userId) {
+    return <div>Usuario no encontrado</div>;  // Manejar el caso en que no se proporciona un userId válido
+  }
 
   return (
     <div>
-      {profileData ? (
+      <h2>Perfil del Usuario con id: {userId}</h2>
+      {userData && (
         <div>
-          <img src={profileData.avatar} alt="Avatar" />
-          <p>Name: {profileData.name}</p>
-          <p>Email: {profileData.email}</p>
+          <p>Nombre: {userData.nombre}</p>
+          {/* Ajusta esto según la estructura de tu usuario */}
         </div>
-      ) : (
-        <p>No se ha cargado el perfil</p>
       )}
     </div>
   );
 };
 
-export default UserProfile;
+export default Perfil;
+
