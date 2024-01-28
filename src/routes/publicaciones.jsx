@@ -111,7 +111,8 @@ export default function Publicaciones() {
 
                                                     </div>
                                                     <div className='UserDate'>
-                                                        <a href='/perfil'>{image.name_Username}</a>
+                                                        <a href={`perfil/s/${image.uid}`}>{image.name_Username}</a>
+                                                       
                                                         <li className="date">{new Date(image.createdAt).toUTCString().replace('GMT', '')}</li>
                                                     </div>
                                                 </div>

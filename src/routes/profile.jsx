@@ -1,56 +1,73 @@
 /* eslint-disable react/prop-types */
 // UserList.js
+import Card from '../components/CardAvatar';
 import { useEffect, useState } from 'react';
-import {supabase} from '../routes/Auth/supabaseClient'
-
-// Importa las dependencias necesarias
+import { supabase } from '../routes/Auth/supabaseClient'
 
 import { useParams } from 'react-router-dom';  // Importa 'useParams' de react-router-dom
+import Upload from './ImageUploader';
 
-const Perfil = () => {
-  const { userId } = useParams();  // Obtén el 'userId' de los parámetros de la URL
-  const [userData, setUserData] = useState(null);
+
+function Perfil() {
+  const { userId } = useParams();  // Accede al valor específico 'userId' del objeto devuelto por 'useParams'
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
-    const fetchUserProfile = async () => {
+    const fetchUser = async () => {
       try {
-        // Realizar la consulta a la tabla 'public.Users' con la condición 'WHERE id = userId'
-        const { data, error } = await supabase
+        const { data: users, error: usersError } = await supabase
           .from('idectableimages')
           .select('*')
-          .eq('id', userId);
+          .eq('user_id', userId);
 
-        if (error) {
-          throw error;
+        if (users && users.length > 0) {
+          // El usuario existe, muestra la información del usuario
+          setUser(users[0]); // Considera el primer resultado si hay varios usuarios con el mismo ID
+        } else {
+          // El usuario no existe, podrías manejar esto de alguna manera (mostrar un mensaje, redirigir, etc.)
+          console.log('Usuario no encontrado');
         }
-
-        setUserData(data[0]);  // Supongo que solo esperas un usuario, por lo que tomo el primer elemento del array
       } catch (error) {
-        console.error('Error al recuperar el perfil del usuario:', error.message);
+        console.error('Error al obtener el usuario:', error);
       }
     };
 
-    if (userId) {
-      fetchUserProfile();
-    }
-  }, [userId]);
-
-  if (!userId) {
-    return <div>Usuario no encontrado</div>;  // Manejar el caso en que no se proporciona un userId válido
-  }
+    fetchUser();
+  }, [userId]); // Ahora depende del cambio en el parámetro de la URL
 
   return (
     <div>
-      <h2>Perfil del Usuario con id: {userId}</h2>
-      {userData && (
+      {user && (
         <div>
-          <p>Nombre: {userData.nombre}</p>
-          {/* Ajusta esto según la estructura de tu usuario */}
+          {/* <p>{user.user_id}</p>
+          <p>{user.email}</p>
+          <p>{user.nameUser}</p>
+          <img src={user.avatarUrl} alt={user} />
+          */}
+
+          <Card
+            avatar={user.avatarUrl}
+            email={user.email}
+            username={user.nameUser}
+            logout={'fdgj'}
+            btnText2='ndas'
+            />
+            <Upload/>
+          
+
+        
+
         </div>
+
+
       )}
+
+
+
     </div>
   );
-};
+}
+
 
 export default Perfil;
 
