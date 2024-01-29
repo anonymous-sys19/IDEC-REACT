@@ -134,7 +134,7 @@ const MenuNavbar = () => {
                           }
                           id={`offcanvasNavbarDropdown-expand-${expand}`}
                           drop={'start'}>
-                          <NavDropdown.Item href='/Upload'>Upload </NavDropdown.Item>
+                          {/* <NavDropdown.Item href='/Upload'>Upload </NavDropdown.Item> */}
                           <NavDropdown.Divider />
                           <NavDropdown.Item href='/perfil/s/'>Perfil </NavDropdown.Item>
                           <NavDropdown.Item href='/logout'>Logout</NavDropdown.Item>
@@ -245,9 +245,9 @@ const MenuNavbar = () => {
         <Route path='/ministerio-de-la-mujer'>
 
         </Route>
-        <Route path="/Upload">
+        {/* <Route path="/Upload">
           <Upload />
-        </Route>
+        </Route> */}
         <Route path='/perfil/s/:userId'>
           <Perfil />
         </Route>

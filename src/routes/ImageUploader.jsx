@@ -6,6 +6,10 @@ import { UserAuth } from './Auth/AuthContext';
 import { FcUpload } from "react-icons/fc";
 import { FaImages } from "react-icons/fa";
 import { AiFillDelete } from 'react-icons/ai';
+// box to img List
+import Box from '@mui/material/Box';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
 
 // eslint-disable-next-line no-unused-vars
 import { SuccessNotification, ErrorNotification, WarningNotification } from '../hooks/HooksAlerts';
@@ -142,7 +146,7 @@ const Upload = () => {
       // if (error) {
       //   throw error;
       // }
-      console.log("Name",cleanedImages);
+      console.log("Name", cleanedImages);
       console.log("Name.nme", cleanedImages.name);
       for (const cleanedImage of cleanedImages) {
         const { data, error } = await supabase.storage.from("idec-public").upload(`images/${cleanedImage.name}`, cleanedImage);
@@ -216,7 +220,7 @@ const Upload = () => {
   return (
     <article className="ArticleUpload" id='ArticleUpload'>
       <div className="text-center">
-       
+
 
         <div className="">
           <div className="cont-Form">
@@ -292,37 +296,32 @@ const Upload = () => {
         <div className='"container text-center'>
 
         </div>
-        <div className='row'>
-          <div className="col">
-            {imageViews.map((url, index) => (
-
-              // eslint-disable-next-line react/jsx-key
-              <div className='container cont-img-Change'>
-                {imageViews[index] && (
-                  <>
-                    <div key={index} >
-
-                      <span onClick={() => handleRemove(index)} className='btn-clear'>
-                        <AiFillDelete />
-                      </span>
-
-                      <img className='iborrainputfile' src={url} style={{
-                        widows: 'auto',
-                        height: '-webkit-fit-content'
-                      }} alt={`Imagen ${index}`} />
-                    </div>
 
 
-                  </>
-                )}
+        {imageViews[0] && (
+          <Box sx={{ maxWidth: 900, maxHeight: 450, overflowY: 'scroll', margin: 'auto' }}>
+            <ImageList className='container cont-img-Change' variant="quilted" cols={3}  rowHeight={121}>
+              {imageViews.map((url, index) => (
+                <>
+                  <ImageListItem key={index}>
+                    <span onClick={() => handleRemove(index)} className='btn-clear'>
+                      <AiFillDelete />
+                    </span>
+                    <img className='iborrainputfile'
+                      srcSet={url}
+                      src={url}
+                      alt={`Imagen ${index}`}
+                      loading="lazy"
+                    />
+                  </ImageListItem>
 
-              </div>
 
-            ))}
+                </>
+              ))}
 
-          </div>
-        </div>
-
+            </ImageList>
+          </Box>
+        )}
       </div>
     </article>
   )
