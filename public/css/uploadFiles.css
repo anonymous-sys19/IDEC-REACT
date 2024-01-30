@@ -96,15 +96,22 @@
         && div {
             margin: 0 0.2rem;
             max-width: 100%;
+            display: -webkit-inline-box;
+        }
+
+        && label {
+            display: flex !important;
         }
     }
 
     .container-Upload {
-        display: flex;
+        display: flex !important;
         justify-content: end;
         position: relative;
-        top: 3rem;
-        right: -0.5rem;
+        top: 44px;
+        width: min-content;
+        /* border: 1px solid; */
+        float: right;
     }
 
     .input-Description {
