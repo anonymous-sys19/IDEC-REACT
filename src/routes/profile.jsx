@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
-// UserList.js
+
 import Card from '../components/CardAvatar';
 import { useEffect, useState } from 'react';
 import { supabase } from '../routes/Auth/supabaseClient'
