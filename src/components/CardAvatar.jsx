@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import './card.css'
 const Card = ({ email, username, avatar, logout, btnText2 }) => {
     return (
@@ -9,7 +10,7 @@ const Card = ({ email, username, avatar, logout, btnText2 }) => {
                 </svg>
             </div>
             <div className="card__avatar">
-                <svg style={{ borderRadius: '50px'}} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+                <svg style={{ borderRadius: '50px' }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
                 <image href={avatar} width="100%" height="100%" />
                 </svg>
             </div>

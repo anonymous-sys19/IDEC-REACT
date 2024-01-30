@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 // UserList.js
 import Card from '../components/CardAvatar';
@@ -6,11 +7,17 @@ import { supabase } from '../routes/Auth/supabaseClient'
 
 import { useParams } from 'react-router-dom';  // Importa 'useParams' de react-router-dom
 import Upload from './ImageUploader';
-
+// FIXME:  importo el context de session
+import { UserAuth } from './Auth/AuthContext';
 
 function Perfil() {
-  const { userId } = useParams();  // Accede al valor específico 'userId' del objeto devuelto por 'useParams'
-  const [user, setUser] = useState(null);
+  const { user, session, signout,  } = UserAuth();
+  // Verifica si hay una sesión
+  const isAuthenticated = user.email;
+
+  const { userId } = useParams();  // FIXME: Accede al valor específico 'userId' del objeto devuelto por 'useParams'
+  const [ nUser, setUser] = useState(null);
+ 
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -21,10 +28,11 @@ function Perfil() {
           .eq('user_id', userId);
 
         if (users && users.length > 0) {
-          // El usuario existe, muestra la información del usuario
-          setUser(users[0]); // Considera el primer resultado si hay varios usuarios con el mismo ID
+          // FIXME: El usuario existe, muestra la información del usuario
+          setUser(users[0]); 
+          // FIXME: Considera el primer resultado si hay varios usuarios con el mismo ID
         } else {
-          // El usuario no existe, podrías manejar esto de alguna manera (mostrar un mensaje, redirigir, etc.)
+          // FIXME: El usuario no existe, pod rías manejar esto de alguna manera (mostrar un mensaje, redirigir, etc.)
           console.log('Usuario no encontrado');
         }
       } catch (error) {
@@ -33,26 +41,25 @@ function Perfil() {
     };
 
     fetchUser();
-  }, [userId]); // Ahora depende del cambio en el parámetro de la URL
+  }, [userId]); 
+  //  FIXME: Ahora depende del cambio en el parámetro de la URL
 
   return (
     <div>
-      {user && (
+      {nUser && (
         <div>
-          {/* <p>{user.user_id}</p>
-          <p>{user.email}</p>
-          <p>{user.nameUser}</p>
-          <img src={user.avatarUrl} alt={user} />
-          */}
 
           <Card
-            avatar={user.avatarUrl}
-            email={user.email}
-            username={user.nameUser}
+            avatar={nUser.avatarUrl}
+            email={nUser.email}
+            username={nUser.nameUser}
             logout={'fdgj'}
             btnText2='ndas'
             />
-            <Upload/>
+            { isAuthenticated && nUser.email ? (
+
+              <Upload/>
+            ): ""}
           
 
         

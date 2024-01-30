@@ -13,11 +13,11 @@ import { SuccessNotification, ErrorNotification, WarningNotification } from '../
 const Upload = () => {
 
   const { session, signout, user } = UserAuth();
-  // Verifica si hay una sesión
+
+  // TODO: Verifica si hay una sesión
+
   const isAuthenticated = user.email;
 
-
-  // console.log(isAuthenticated);
 
   const [isSuccess, setIsSuccess] = useState(false);
   const [isError, setIsError] = useState(false);
@@ -48,16 +48,7 @@ const Upload = () => {
   // eslint-disable-next-line no-unused-vars
   const [nombreArchivo, setNombreArchivo] = useState('');
 
-  // const handleImageChange = (e) => {
-  //   const nombreArchivo = e.target.files[0];
-
-  //   setImage(nombreArchivo);
-  //   setNombreArchivo(nombreArchivo);
-  //   setImageViews(URL.createObjectURL(nombreArchivo))
-
-
-  // };
-
+ 
   const handleImageChange = (e) => {
     const nuevosArchivos = e.target.files;
 
@@ -107,13 +98,6 @@ const Upload = () => {
 
 
   }
-  // const cleanedFileName = image[0]?.map((file, index) => {
-  //   const cleanedImages = file.name.replace(/\s/g, '_');
-  //   console.log(`Archivo ${index + 1}:`, cleanedFileName);
-  //   // Realiza aquí cualquier operación que necesites con el objeto File
-  //   return { ...file, cleanedImages }; // Esto es necesario en una función map
-  // });
-
 
 
   const handleUpload = async (e) => {
@@ -122,9 +106,9 @@ const Upload = () => {
       return; //<showSuccessNotification/> //FKJSQDFHE
     }
     try {
-      // Limpiar el nombre del archivo: reemplazar espacios con guiones bajos
+      //  TODO: Limpiar el nombre del archivo: reemplazar espacios con guiones bajos
       // const cleanedFileName = image.name.replace(/\s/g, '_');
-
+ 
       const cleanedImages = image.map((file, index) => {
         const cleanedFileName = file.name.replace(/\s/g, '_');
         console.log(`Archivo ${index + 1}:`, cleanedFileName);
@@ -136,12 +120,7 @@ const Upload = () => {
         return newFile;
       });
 
-      // console.log(cleanedFileName);
-      // const { data, error } = await supabase.storage.from("idec-public").upload(`images/${cleanedFileName}`, image);
-
-      // if (error) {
-      //   throw error;
-      // }
+      
       console.log("Name",cleanedImages);
       console.log("Name.nme", cleanedImages.name);
       for (const cleanedImage of cleanedImages) {

@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
 import '/public/css/publication.css'
-//Hooks
+// TODO: Hooks
 import { UserAuth } from './routes/Auth/AuthContext.jsx';
 
 import Logo from './components/logo.jsx'
@@ -17,7 +17,7 @@ import Logout from './routes/Auth/Logout.jsx';
 import PrincipiosDoctrinales from './routes/QuienesSomos/PrincipiosDoctrinales.jsx';
 import DeclaracionDFe from './routes/QuienesSomos/declaracion-de-fe.jsx';
 import Conexion2030 from './routes/QuienesSomos/conexion-20-30.jsx';
-// import RadioPlayer from './components/Radio.jsx';
+//FIXME: import RadioPlayer from './components/Radio.jsx';
 
 
 import 'bootstrap/dist/css/bootstrap.min.css'; // Importa los estilos de Bootstrap
@@ -40,7 +40,6 @@ const MenuNavbar = () => {
   // Verifica si hay una sesión
   const isAuthenticated = user.email;
   const currentPath = window.location.pathname
-  console.log(isAuthenticated);
 
   const [searchTerm, setSearchTerm] = useState('');
   const [iframeSize, setIframeSize] = useState({ width: 0, height: 0 });
