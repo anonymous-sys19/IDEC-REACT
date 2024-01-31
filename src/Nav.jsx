@@ -1,10 +1,9 @@
-/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
-/* eslint-disable no-undef */
+
 import '/public/css/publication.css'
 // TODO: Hooks
 import { UserAuth } from './routes/Auth/AuthContext.jsx';
-
+// TODO: RUTAS
 import Logo from './components/logo.jsx'
 import LogoNavMenu from './components/logoNavMenu.jsx';
 import Upload from './routes/ImageUploader.jsx';
@@ -17,9 +16,7 @@ import Logout from './routes/Auth/Logout.jsx';
 import PrincipiosDoctrinales from './routes/QuienesSomos/PrincipiosDoctrinales.jsx';
 import DeclaracionDFe from './routes/QuienesSomos/declaracion-de-fe.jsx';
 import Conexion2030 from './routes/QuienesSomos/conexion-20-30.jsx';
-//FIXME: import RadioPlayer from './components/Radio.jsx';
-
-
+// TODO: Boostrap 
 import 'bootstrap/dist/css/bootstrap.min.css'; // Importa los estilos de Bootstrap
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Importa los scripts de Bootstrap
 import Button from 'react-bootstrap/Button';
@@ -31,9 +28,9 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
-import { BrowserRouter, Redirect, Route, Link, Switch, useHistory } from 'react-router-dom'
+import { BrowserRouter, Route, Link, Switch, useHistory } from 'react-router-dom' //REAC-DOM
 import { useEffect, useState } from 'react';
-// import Upload from './routes/ImageUploader.jsx';
+
 
 const MenuNavbar = () => {
   const { session, signout, user } = UserAuth();
@@ -49,14 +46,10 @@ const MenuNavbar = () => {
     if (iframe) {
       // Actualiza el atributo src del iframe con la URL de búsqueda
       iframe.src = `https://www.bible.com/es/search/bible?query=${searchTerm}`;
-      // https://dailyverses.net/es/
-      // https://bible.knowing-jesus.com/Espa%C3%B1al/words/
-
       // Actualiza el tamaño del iframe después de realizar la búsqueda
       setIframeSize({ width: '100%', height: 600 });
     }
   };
-
   const handleInputChange = (e) => {
     setSearchTerm(e.target.value);
 
@@ -202,12 +195,12 @@ const MenuNavbar = () => {
           src=""
         ></iframe>
       </header>
-      {/* {isAuthenticated ? (<Upload />) : ("")} */}
+     
       <>
         <Switch>
           {/* Otras rutas y componentes aquí */}
           <Route path="/">
-            {isAuthenticated && currentPath === '/' ? <Upload /> : "" }
+            {isAuthenticated && currentPath === '/' ? <Upload /> : ""}
           </Route>
           {/* Otras rutas */}
         </Switch>
@@ -244,11 +237,8 @@ const MenuNavbar = () => {
         <Route path='/ministerio-de-la-mujer'>
 
         </Route>
-        {/* <Route path="/Upload">
-          <Upload />
-        </Route> */}
         <Route path='/perfil/s/:userId'>
-          <Perfil />
+            <Perfil />
         </Route>
         <Route path='/perfil/s'>
           <AppAuth />
@@ -265,6 +255,8 @@ const MenuNavbar = () => {
       </Switch>
 
     </BrowserRouter>
+
+
 
   )
 }

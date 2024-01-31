@@ -23,9 +23,9 @@ const AboutSection = () => {
                         style={
                             {
                                 display: 'flex',
-                                'justify-content': 'center',
-                                'align-items': 'center',
-                                'flex-direction': 'column-reverse',
+                                justifyContent: 'center',
+                                alignItems: 'center',
+                                flexDirection: 'column-reverse',
                             }
                         }
                         >

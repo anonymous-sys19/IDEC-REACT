@@ -1,5 +1,6 @@
 /* eslint-disable react/jsx-key */
 /* eslint-disable no-unused-vars */
+import { Link } from 'react-router-dom';
 import { FaEllipsisV } from 'react-icons/fa';
 import { AiTwotoneMessage } from "react-icons/ai";
 import { FaShare, FaUser } from "react-icons/fa6";
@@ -111,8 +112,8 @@ export default function Publicaciones() {
 
                                                     </div>
                                                     <div className='UserDate'>
-                                                        <a href={`perfil/s/${image.uid}`}>{image.name_Username}</a>
-                                                       
+                                                        {/* <a href={`perfil/s/${image.uid}`}>{image.name_Username}</a> */}
+                                                        <Link to={`/perfil/s/${image.uid}`}>{image.name_Username}</Link>
                                                         <li className="date">{new Date(image.createdAt).toUTCString().replace('GMT', '')}</li>
                                                     </div>
                                                 </div>

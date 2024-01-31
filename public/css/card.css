@@ -1,0 +1,120 @@
+
+.hr {
+  border-top: var(--bs-border-width) solid;
+  color: #78858f;
+  margin: 1rem 0 0 0;
+
+}
+
+.card {
+  --main-color: #000;
+  --submain-color: #78858f;
+  --bg-color: #fff;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  position: relative;
+  /* width: 300px; */
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  border-radius: 20px;
+  background: var(--bg-color);
+  
+
+}
+
+.card__img {
+  height: 192px;
+  width: 100%;
+  /* background: black; */
+
+}
+
+.card__img svg {
+  height: 100%;
+  border-radius: 20px 20px 0 0;
+  -webkit-border-radius: 20px 20px 0 0;
+  -moz-border-radius: 20px 20px 0 0;
+  -ms-border-radius: 20px 20px 0 0;
+  -o-border-radius: 20px 20px 0 0;
+}
+
+.card__avatar {
+  position: absolute;
+  /* width: 114px; */
+  height: 50px;
+  background: var(--bg-color);
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: calc(50% - 57px);
+  margin: 0 0 0 1rem;
+}
+
+.card__avatar svg {
+  width: 130px;
+  height: 130px;
+}
+
+.card__title {
+  margin-top: 60px;
+  font-weight: 500;
+  font-size: 18px;
+  color: var(--main-color);
+  margin: 100px 0 0 1rem;
+}
+
+.card__subtitle {
+  margin-top: 10px;
+  font-weight: 400;
+  font-size: 15px;
+  color: var(--submain-color);
+  margin: 10px 0 0 1rem;
+}
+
+.card__btn {
+  margin-top: 15px;
+  margin: 15px 0 0 1rem;
+  width: 76px;
+  height: 31px;
+  border: 2px solid var(--main-color);
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 11px;
+  color: var(--main-color);
+  background: var(--bg-color);
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+.card__btn-solid {
+  background: var(--main-color);
+  color: var(--bg-color);
+}
+
+.card__btn:hover {
+  background: var(--main-color);
+  color: var(--bg-color);
+}
+
+.card__btn-solid:hover {
+  background: var(--bg-color);
+  color: var(--main-color);
+}
+
+
+
+@media screen and (max-width: 770px) {
+  .card__avatar{
+    position: relative;
+  }
+  .cont-perfil{
+    display: block !important;
+    text-align: center;
+  }
+  /* .card{
+    width: auto;
+  } */
+}
