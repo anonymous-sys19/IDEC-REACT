@@ -1,0 +1,57 @@
+.children-20-30{
+    display: flex;
+}
+
+.father-avatar-20-30{
+    width: 100%;
+    background: url(/public/images/20_30_conex.jpeg);
+    height: 500px;
+    margin: 0 0 500px auto;
+
+
+}
+.container-avatar-20-30{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    height: -webkit-fill-available;
+    background: #0000ff42;
+
+    && .avatar-conex{
+        display: flex;
+        margin: auto;
+
+    }
+}
+.avatar-conex {
+
+    && img {
+        width: 60%;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        margin: auto;
+    }
+}
+
+/* Element of by  avatar-and conex-to 20-30 */
+
+.father-text{
+    width: auto;
+    margin: 0 5%;
+}
+
+@media screen and (max-width: 870px) {
+    .children-20-30{
+        display: block;
+    }
+
+    .father-avatar-20-30 {
+        max-width: 100%;
+        background: url(/public/images/20_30_conex.jpeg) no-repeat center;
+        height: 400px;
+        margin: 0px 1px 70px 1px;
+    }
+}

@@ -15,7 +15,7 @@ import Perfil from './routes/profile.jsx';
 import Logout from './routes/Auth/Logout.jsx';
 import PrincipiosDoctrinales from './routes/QuienesSomos/PrincipiosDoctrinales.jsx';
 import DeclaracionDFe from './routes/QuienesSomos/declaracion-de-fe.jsx';
-import Conexion2030 from './routes/QuienesSomos/conexion-20-30.jsx';
+import Conexion2030 from './routes/QuienesSomos/conexion2030.jsx';
 // TODO: Boostrap 
 import 'bootstrap/dist/css/bootstrap.min.css'; // Importa los estilos de Bootstrap
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Importa los scripts de Bootstrap
