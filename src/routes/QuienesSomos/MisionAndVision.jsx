@@ -19,10 +19,10 @@ const MisionAndVision = () => {
           la evangelización, el discipulado, la plantación de iglesias y la Misión Global; que desarrolla integralmente a
           sus ministros y congregaciones; que sirve a los que sufren y produce un impacto transformador en la sociedad.
         </p>
-<hr />
+        <hr />
       </section>
       <section>
-        <hr />
+        
         <h2>Plan Estratégico - Conexión 20/30</h2>
         <h3>Misión</h3>
         <p>

@@ -27,51 +27,55 @@ function DeclaracionDFe() {
 
     return (
         <article className="father-decla">
-            <List sx={{ width: '100%', maxWidth: '100%', bgcolor: 'background.paper' }}>
+            <div className="container">
+                <List sx={{ width: '100%', maxWidth: '100%', bgcolor: 'background.paper' }}>
 
-                <div className="container">
-                    <div>
-                        <p>{data?.idec}</p>
-                    </div>
-                    <Divider variant="inset" component="li" />
-                    <div>
-                        {data?.criterio}
-                    </div>
-                </div>
-            </List>
-
-            {data &&
-                data.items.map(item => (
-                    <List sx={{ width: '100%', maxWidth: 660, bgcolor: 'background.paper' }}>
-                        <ListItem alignItems="flex-start">
-                            <ListItemAvatar>
-                                {item.id}
-                            </ListItemAvatar>
-                            <ListItemText
-                                primary={data.title}
-                                secondary={
-                                    <React.Fragment>
-                                        {item.pasaje && item.pasaje.map((pasaje, index) => (
-                                            <Typography
-                                                key={index}
-                                                sx={{ display: 'inline' }}
-                                                component="span"
-                                                variant="body2"
-                                                color="text.primary"
-                                            >
-                                                {pasaje}
-                                            </Typography>
-                                        ))}
-                                        -- {item.content}
-                                    </React.Fragment>
-                                }
-                            />
-                        </ListItem>
+                    <div className="container">
+                        <div>
+                            <p className='decla-p' >{data?.idec}</p>
+                        </div>
                         <Divider variant="inset" component="li" />
+                        <div>
+                            <p className='decla-p' >{data?.criterio}</p>
+                        </div>
+                    </div>
+                </List>
+            </div>
 
-                    </List>
+            <div className="container">
+                {data &&
+                    data.items.map(item => (
+                        <List sx={{ width: '100%', maxWidth: 660, bgcolor: 'background.paper' }}>
+                            <ListItem alignItems="flex-start">
+                                <ListItemAvatar>
+                                    {item.id}
+                                </ListItemAvatar>
+                                <ListItemText
+                                    primary={data.title}
+                                    secondary={
+                                        <React.Fragment>
+                                            {item.pasaje && item.pasaje.map((pasaje, index) => (
+                                                <Typography
+                                                    key={index}
+                                                    sx={{ display: 'inline' }}
+                                                    component="span"
+                                                    variant="body2"
+                                                    color="text.primary"
+                                                >
+                                                    {pasaje}
+                                                </Typography>
+                                            ))}
+                                            -- {item.content}
+                                        </React.Fragment>
+                                    }
+                                />
+                            </ListItem>
+                            <Divider variant="inset" component="li" />
 
-                ))}
+                        </List>
+
+                    ))}
+            </div>
 
 
         </article>
