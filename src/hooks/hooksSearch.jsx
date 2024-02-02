@@ -1,28 +1,5 @@
-// import { useState } from 'react';
 
-// const useBusquedaSearch = () => {
-//   const [searchTerm, setSearchTerm] = useState('');
-
-//   const handleSearch = () => {
-//     const iframe = document.getElementById('searchIframe');
-//     if (iframe) {
-//       // Actualiza el atributo src del iframe con la URL de búsqueda
-//       iframe.src = `https://bible.knowing-jesus.com/Espa%C3%B1al/words/${searchTerm}`;
-//     }
-//   };
-
-//   const handleInputChange = (e) => {
-//     setSearchTerm(e.target.value);
-//   };
-
-//   return { searchTerm, handleSearch, handleInputChange };
-// };
-
-// export default useBusquedaSearch;
-
-// hooks.jsx
-// hooksSearch.jsx
-// hooksSearch.jsx
+// hooksSearch.jsx                                      //#Greyvin
 import { useState } from 'react';
 
 const useBusquedaSearch = () => {

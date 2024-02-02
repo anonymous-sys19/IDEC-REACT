@@ -16,6 +16,8 @@ import Logout from './routes/Auth/Logout.jsx';
 import PrincipiosDoctrinales from './routes/QuienesSomos/PrincipiosDoctrinales.jsx';
 import DeclaracionDFe from './routes/QuienesSomos/declaracion-de-fe.jsx';
 import Conexion2030 from './routes/QuienesSomos/conexion2030.jsx';
+import Historia from './routes/QuienesSomos/historia.jsx';
+import MisionAndVision from './routes/QuienesSomos/MisionAndVision.jsx';
 // TODO: Boostrap 
 import 'bootstrap/dist/css/bootstrap.min.css'; // Importa los estilos de Bootstrap
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'; // Importa los scripts de Bootstrap
@@ -193,9 +195,10 @@ const MenuNavbar = () => {
           height={iframeSize.height}
           frameBorder="0"
           src=""
-        ></iframe>
+        >
+        </iframe>
       </header>
-     
+
       <>
         <Switch>
           {/* Otras rutas y componentes aquí */}
@@ -214,13 +217,13 @@ const MenuNavbar = () => {
           <Biblia />
         </Route>
         <Route path='/historia' >
-
+            <Historia/>
         </Route>
         <Route path='/conexion'>
           <Conexion2030 />
         </Route>
         <Route path='/mision'>
-
+          <MisionAndVision/>
         </Route>
         <Route path='/declaracion-de-fe'>
           <DeclaracionDFe />
@@ -238,7 +241,7 @@ const MenuNavbar = () => {
 
         </Route>
         <Route path='/perfil/s/:userId'>
-            <Perfil />
+          <Perfil />
         </Route>
         <Route path='/perfil/s'>
           <AppAuth />

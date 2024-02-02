@@ -1,0 +1,66 @@
+{
+  "id": "creemos",
+  "father": "Declaración de fe",
+  "title": "Creemos",
+  "idec": "Breve reseña histórica: El 7 de enero, se conmemoró en toda la Iglesia de Dios Internacional el 70 aniversario de nuestra DECLARACIÓN DE FE. En 1948, durante la 42a. Asamblea General en Birmingham, Alabama, se nombró un comité para trabajar en dicha declaración de fe para la Iglesia de Dios. En 292 palabras (en español) y 14 declaraciones, se plasmaron los artículos que darían dirección al sistema doctrinal de nuestra iglesia.",
+  "criterio": "La Iglesia de Dios cree y sostiene la Biblia en su totalidad, debidamente trazada. El Nuevo Testamento es su única regla de gobierno y disciplina. La Iglesia de Dios ha adoptado la siguiente Declaración de Fe como el estandarte oficial de su doctrina.",
+  "items": [
+    {
+      "id": 1,
+      "content": "En la inspiración verbal de la Biblia.",
+      "pasaje": ["(2 Pedro 1:21)", "(2 Timoteo 3:16)"]
+    },
+    {
+      "id": 2,
+      "content": "En un Dios que existe eternamente en tres personas: el Padre, el Hijo y el Espíritu Santo."
+    },
+    {
+      "id": 3,
+      "content": "Que Jesucristo es el unigénito del Padre, concebido por el Espíritu Santo y nacido de la virgen María. Fue crucificado, sepultado y resucitó de entre los muertos. Ascendió al cielo y está hoy a la diestra del Padre como nuestro Intercesor."
+    },
+    {
+      "id": 4,
+      "content": "Que todos han pecado y han sido destituidos de la gloria de Dios, y que el arrepentimiento es ordenado por Dios para todos y necesario para el perdón de los pecados."
+    },
+    {
+      "id": 5,
+      "content": "Que la justificación, la regeneración y el nuevo nacimiento se efectúan por fe en la sangre de Jesucristo."
+    },
+    {
+      "id": 6,
+      "content": "En la santificación, que sigue al nuevo nacimiento, por fe en la sangre de Jesucristo, mediante la Palabra y el Espíritu Santo."
+    },
+    {
+      "id": 7,
+      "content": "Que la santidad es la norma de vida de Dios para su pueblo."
+    },
+    {
+      "id": 8,
+      "content": "En el bautismo con el Espíritu Santo, subsecuente a la limpieza del corazón."
+    },
+    {
+      "id": 9,
+      "content": "En hablar en otras lenguas, como el Espíritu dirija a la persona, lo cual es la evidencia inicial del bautismo en el Espíritu Santo."
+    },
+    {
+      "id": 10,
+      "content": "En el bautismo en agua por inmersión, y que todos los que se arrepienten deben ser bautizados en el nombre del Padre, del Hijo y del Espíritu Santo."
+    },
+    {
+      "id": 11,
+      "content": "Que la sanidad divina está provista para todos en la expiación."
+    },
+    {
+      "id": 12,
+      "content": "En la cena del Señor y el lavatorio de los pies de los santos."
+    },
+    {
+      "id": 13,
+      "content": "En la segunda venida de Jesús antes del milenio. Primero, resucitará a los justos muertos y arrebatará a los santos vivos hacia Él en el aire. Segundo, reinará en la tierra por mil años."
+    },
+    {
+      "id": 14,
+      "content": "En la resurrección corporal; vida eterna para los justos y castigo eterno para los inicuos."
+    }
+  ]
+}
