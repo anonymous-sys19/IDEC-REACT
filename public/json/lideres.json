@@ -1,0 +1,161 @@
+{
+    "id": "teamLideres",
+    "title": "Equipo de Lideres",
+    "items": [
+       {
+        "id": 1,
+        "image": "/images/LideresEquipo/Greyvin.png",
+        "year": "03/Enero/2024",
+        "nombre":"Greyvin",
+        "apellido":"Mayorga",
+        "cargo": "Tecnologia",
+        "equipo": "Multimedia",
+        "mision": "Guiados por la fe y el amor hacia Dios, nuestra misión en el equipo de tecnología de la iglesia es inspirar, impactar y transformar vidas a través de la creatividad y el servicio. Nos esforzamos por formar un equipo de jóvenes apasionados, diseñadores comprometidos y atentos, dispuestos a utilizar sus habilidades en fotografía, diseño y actividades para glorificar a Dios y edificar a nuestra comunidad. Inspiramos a cada miembro a crecer espiritualmente, trabajando juntos en unidad y esfuerzo, siendo una luz en el mundo digital y físico.",
+        "vision": "Imaginamos un equipo de tecnología en nuestra iglesia que refleje la excelencia, la creatividad y el amor de Dios. Nos vemos como un grupo unido de jóvenes, apasionados por servir y hacer la diferencia en la vida de las personas a través de la tecnología. Basándonos en Proverbios 3:5-6, confiamos en el Señor con todo nuestro corazón y no nos apoyamos en nuestro propio entendimiento, reconociéndolo en todos nuestros caminos. Queremos ser un faro de inspiración y creatividad, llevando el mensaje de esperanza y amor a través de nuestras habilidades y dedicación al servicio divino.",
+        "pasaje": "Confía en el Señor con todo tu corazón y no te apoyes en tu propio entendimiento; reconócelo en todos tus caminos, y él enderezará tus veredas." 
+       },
+       {
+        "id": 2,
+        "nombre":"Nada aun",
+        "apellido":"Nada aun",
+        "cargo": "Nada aun",
+        "equipo": "Nada aun",
+        "vision": "Nada aun",
+        "mision": "Nada aun",
+        "pasaje": "Nada aun"
+       },
+       {
+        "id": 3,
+        "nombre":"Nada aun",
+        "apellido":"Nada aun",
+        "cargo": "Nada aun",
+        "equipo": "Nada aun",
+        "vision": "Nada aun",
+        "mision": "Nada aun",
+        "pasaje": "Nada aun"
+
+       },
+       {
+        "id": 4,
+        "nombre":"Nada aun",
+        "apellido":"Nada aun",
+        "cargo": "Nada aun",
+        "equipo": "Nada aun",
+        "vision": "Nada aun",
+        "mision": "Nada aun",
+        "pasaje": "Nada aun"
+
+       },
+       {
+        "id": 5,
+        "nombre":"Nada aun",
+        "apellido":"Nada aun",
+        "cargo": "Nada aun",
+        "equipo": "Nada aun",
+        "vision": "Nada aun",
+        "mision": "Nada aun",
+        "pasaje": "Nada aun"
+
+       },
+       {
+        "id": 6,
+        "nombre":"Nada aun",
+        "apellido":"Nada aun",
+        "cargo": "Nada aun",
+        "equipo": "Nada aun",
+        "vision": "Nada aun",
+        "mision": "Nada aun",
+        "pasaje": "Nada aun"
+
+       },
+       {
+        "id": 7,
+        "nombre":"Nada aun",
+        "apellido":"Nada aun",
+        "cargo": "Nada aun",
+        "equipo": "Nada aun",
+        "vision": "Nada aun",
+        "mision": "Nada aun",
+        "pasaje": "Nada aun"
+
+       },
+       {
+        "id": 8,
+        "nombre":"Nada aun",
+        "apellido":"Nada aun",
+        "cargo": "Nada aun",
+        "equipo": "Nada aun",
+        "vision": "Nada aun",
+        "mision": "Nada aun",
+        "pasaje": "Nada aun"
+
+       },
+       {
+        "id": 9,
+        "nombre":"Nada aun",
+        "apellido":"Nada aun",
+        "cargo": "Nada aun",
+        "equipo": "Nada aun",
+        "vision": "Nada aun",
+        "mision": "Nada aun",
+        "pasaje": "Nada aun"
+
+       },
+       {
+        "id": 10,
+        "nombre":"Nada aun",
+        "apellido":"Nada aun",
+        "cargo": "Nada aun",
+        "equipo": "Nada aun",
+        "vision": "Nada aun",
+        "mision": "Nada aun",
+        "pasaje": "Nada aun"
+
+       },
+       {
+        "id": 11,
+        "nombre":"Nada aun",
+        "apellido":"Nada aun",
+        "cargo": "Nada aun",
+        "equipo": "Nada aun",
+        "vision": "Nada aun",
+        "mision": "Nada aun",
+        "pasaje": "Nada aun"
+
+       },
+       {
+        "id": 12,
+        "nombre":"Nada aun",
+        "apellido":"Nada aun",
+        "cargo": "Nada aun",
+        "equipo": "Nada aun",
+        "vision": "Nada aun",
+        "mision": "Nada aun",
+        "pasaje": "Nada aun"
+
+       },
+       {
+        "id": 13,
+        "nombre":"Nada aun",
+        "apellido":"Nada aun",
+        "cargo": "Nada aun",
+        "equipo": "Nada aun",
+        "vision": "Nada aun",
+        "mision": "Nada aun",
+        "pasaje": "Nada aun"
+
+       },
+       {
+        "id": 14,
+        "nombre":"Nada aun",
+        "apellido":"Nada aun",
+        "cargo": "Nada aun",
+        "equipo": "Nada aun",
+        "vision": "Nada aun",
+        "mision": "Nada aun",
+        "pasaje": "Nada aun"
+
+       }
+    ]
+
+}

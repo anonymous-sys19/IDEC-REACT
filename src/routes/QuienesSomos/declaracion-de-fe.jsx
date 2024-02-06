@@ -32,11 +32,11 @@ function DeclaracionDFe() {
 
                     <div className="container">
                         <div>
-                            <p className='decla-p' >{data?.idec}</p>
+                            <p className='decla-p animate animate__backInDown' >{data?.idec}</p>
                         </div>
                         <Divider variant="inset" component="li" />
                         <div>
-                            <p className='decla-p' >{data?.criterio}</p>
+                            <p className='decla-p animate animate__backInUp' >{data?.criterio}</p>
                         </div>
                     </div>
                 </List>
@@ -45,7 +45,7 @@ function DeclaracionDFe() {
             <div className="container">
                 {data &&
                     data.items.map(item => (
-                        <List sx={{ width: '100%', maxWidth: 660, bgcolor: 'background.paper' }}>
+                        <List sx={{ width: '100%', maxWidth: 660, bgcolor: 'background.paper' }} className='animate animate__fadeInUp'>
                             <ListItem alignItems="flex-start">
                                 <ListItemAvatar>
                                     {item.id}
