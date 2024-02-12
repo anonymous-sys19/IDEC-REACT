@@ -28,15 +28,23 @@ const TeamSection = () => {
                         <div className="columnTeam" key={item} id='containerTeam'>
                             <div className="team">
                                 <div className="team-img">
+                                   {item.image ? (
+                                     <img className='teamImg' src={item.image} alt="Team Image" />
+                                   ): (
                                     <img className='teamImg' src="/images/logo-idec.png" alt="Team Image" />
+                                   )}
                                 </div>
                                 <div className="team-content">
                                     <h2>{`${item.nombre} ${item.apellido}`}</h2>
                                     <h3>{item.equipo}</h3>
                                     <p>{item.pasaje}</p>
-                                    <h4>Nada</h4>
+                                    <h4>{item.verse}</h4>
                                 </div>
-                                <SocialMedia />
+                                <SocialMedia
+                                facebook={item.facebook}
+                                instagran={item.instagran}
+                                whasapp={item.whatsapp}
+                                />
                             </div>
                         </div>
                     ))}

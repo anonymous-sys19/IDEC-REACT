@@ -45,6 +45,7 @@ const ServiceSection = () => {
                                     'background': 'aquamarine',
                                     'color': 'black',
                                     'border': 'none',
+                                    
                                 }
                             } onClick={captureAndDownloadImage}>Capturar imagen</button>
                             <Helmet>

@@ -50,3 +50,15 @@ nav {
     color: darkblue;
     padding:2px;
 }
+/* Service Section */
+.sec-daily{
+    background-image: url(/public//images/bg-10.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    font-weight: 700;
+
+}
+.dailyVerse a{
+    font-weight: 900;
+}

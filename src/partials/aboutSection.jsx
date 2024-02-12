@@ -1,14 +1,15 @@
 /* eslint-disable no-undef */
 
 import { useEffect, useState } from "react";
-import React from "react";
 
 const AboutSection = () => {
     const ImgResponsiv = {
         width: 'initial',
         height: '-webkit-fill-available',
         margin: 'unset',
-        padding: '0.3rem',
+        // padding: '0.3rem',
+        borderRadius: 'inherit',
+        
     }
 
     const [data, setData] = useState(null);

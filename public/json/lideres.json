@@ -4,6 +4,28 @@
     "items": [
        {
         "id": 1,
+        "nombre":"Nada aun",
+        "apellido":"Nada aun",
+        "cargo": "Pastores",
+        "equipo": "Familia Pastoral",
+        "vision": "Nada aun",
+        "mision": "Nada aun",
+        "pasaje": "Nada aun",
+        "verse": "Nada"
+        },
+       {
+        "id": 2,
+        "nombre":"Nada aun",
+        "apellido":"Nada aun",
+        "cargo": "Lider cuido pastoral",
+        "equipo": "Cuido pastoral",
+        "vision": "Nada aun",
+        "mision": "Nada aun",
+        "pasaje": "Nada aun",
+        "verse": "Nada"
+       },
+       {
+        "id": 3,
         "image": "/images/LideresEquipo/Greyvin.png",
         "year": "03/Enero/2024",
         "nombre":"Greyvin",
@@ -12,148 +34,119 @@
         "equipo": "Multimedia",
         "mision": "Guiados por la fe y el amor hacia Dios, nuestra misión en el equipo de tecnología de la iglesia es inspirar, impactar y transformar vidas a través de la creatividad y el servicio. Nos esforzamos por formar un equipo de jóvenes apasionados, diseñadores comprometidos y atentos, dispuestos a utilizar sus habilidades en fotografía, diseño y actividades para glorificar a Dios y edificar a nuestra comunidad. Inspiramos a cada miembro a crecer espiritualmente, trabajando juntos en unidad y esfuerzo, siendo una luz en el mundo digital y físico.",
         "vision": "Imaginamos un equipo de tecnología en nuestra iglesia que refleje la excelencia, la creatividad y el amor de Dios. Nos vemos como un grupo unido de jóvenes, apasionados por servir y hacer la diferencia en la vida de las personas a través de la tecnología. Basándonos en Proverbios 3:5-6, confiamos en el Señor con todo nuestro corazón y no nos apoyamos en nuestro propio entendimiento, reconociéndolo en todos nuestros caminos. Queremos ser un faro de inspiración y creatividad, llevando el mensaje de esperanza y amor a través de nuestras habilidades y dedicación al servicio divino.",
-        "pasaje": "Confía en el Señor con todo tu corazón y no te apoyes en tu propio entendimiento; reconócelo en todos tus caminos, y él enderezará tus veredas." 
-       },
-       {
-        "id": 2,
-        "nombre":"Nada aun",
-        "apellido":"Nada aun",
-        "cargo": "Nada aun",
-        "equipo": "Nada aun",
-        "vision": "Nada aun",
-        "mision": "Nada aun",
-        "pasaje": "Nada aun"
-       },
-       {
-        "id": 3,
-        "nombre":"Nada aun",
-        "apellido":"Nada aun",
-        "cargo": "Nada aun",
-        "equipo": "Nada aun",
-        "vision": "Nada aun",
-        "mision": "Nada aun",
-        "pasaje": "Nada aun"
+        "pasaje": "Confía en el Señor con todo tu corazón y no te apoyes en tu propio entendimiento; reconócelo en todos tus caminos, y él enderezará tus veredas." ,
+        "verse" : "Proverbios 3:5",
+        "facebook": "https://www.facebook.com/greivin.mayorga.5/",
+        "instagran": "https://www.instagram.com/greivin_mayorga",
+        "whatsapp": "https://alvo.chat/3Uqh"
 
        },
        {
         "id": 4,
         "nombre":"Nada aun",
         "apellido":"Nada aun",
-        "cargo": "Nada aun",
-        "equipo": "Nada aun",
+        "cargo": "Lider Caballeros",
+        "equipo": "Caballeros",
         "vision": "Nada aun",
         "mision": "Nada aun",
-        "pasaje": "Nada aun"
+        "pasaje": "Nada aun",
+        "verse": "Nada"
 
        },
        {
         "id": 5,
         "nombre":"Nada aun",
         "apellido":"Nada aun",
-        "cargo": "Nada aun",
-        "equipo": "Nada aun",
+        "cargo": "Lider Damas",
+        "equipo": "Damas",
         "vision": "Nada aun",
         "mision": "Nada aun",
-        "pasaje": "Nada aun"
+        "pasaje": "Nada aun",
+        "verse": "Nada"
 
        },
        {
         "id": 6,
         "nombre":"Nada aun",
         "apellido":"Nada aun",
-        "cargo": "Nada aun",
-        "equipo": "Nada aun",
+        "cargo": "Lider Jovenes",
+        "equipo": "GEmergente",
         "vision": "Nada aun",
         "mision": "Nada aun",
-        "pasaje": "Nada aun"
+        "pasaje": "Nada aun",
+        "verse": "Nada"
 
        },
        {
         "id": 7,
         "nombre":"Nada aun",
         "apellido":"Nada aun",
-        "cargo": "Nada aun",
-        "equipo": "Nada aun",
+        "cargo": "Lider Junior",
+        "equipo": "GEmergente Junior",
         "vision": "Nada aun",
         "mision": "Nada aun",
-        "pasaje": "Nada aun"
+        "pasaje": "Nada aun",
+        "verse": "Nada"
 
        },
        {
         "id": 8,
-        "nombre":"Nada aun",
-        "apellido":"Nada aun",
-        "cargo": "Nada aun",
-        "equipo": "Nada aun",
-        "vision": "Nada aun",
-        "mision": "Nada aun",
-        "pasaje": "Nada aun"
+        "nombre":"Sindy",
+        "apellido":"Mayorga Baltodano" ,
+        "cargo": "Lider Infantil",
+        "equipo": "Ministerio Infantil",
+        "vision": "Guiar a los niños hacia una conexión más profunda con Jesucristo, cultivando un ambiente donde florezcan los valores bíblicos y se fortalezca su relación espiritual, como un hermoso jardín que refleje la luz divina.",
+        "mision": "Empoderar al equipo de trabajo para que, a través de la enseñanza y el ejemplo, inspiren a la niñez a crecer en el conocimiento y amor hacia Jesucristo, desenmarañando las redes de malas influencias y sembrando semillas de verdad y bondad en sus corazones, como un río que fluye con aguas claras y revitalizantes. \n Que vuestra luz alumbre delante de los hombres, para que vean vuestras buenas obras y glorifiquen a vuestro Padre que está en los cielos. (Mateo 5:16)",
+        "pasaje": "Nada aun",
+        "verse": "Nada"
 
        },
        {
         "id": 9,
         "nombre":"Nada aun",
         "apellido":"Nada aun",
-        "cargo": "Nada aun",
-        "equipo": "Nada aun",
+        "cargo": "Lider Intersexion",
+        "equipo": "Intersexión",
         "vision": "Nada aun",
         "mision": "Nada aun",
-        "pasaje": "Nada aun"
+        "pasaje": "Nada aun",
+        "verse": "Nada"
 
        },
        {
         "id": 10,
         "nombre":"Nada aun",
         "apellido":"Nada aun",
-        "cargo": "Nada aun",
-        "equipo": "Nada aun",
+        "cargo": "Lider Danza",
+        "equipo": "Kairos",
         "vision": "Nada aun",
         "mision": "Nada aun",
-        "pasaje": "Nada aun"
+        "pasaje": "Nada aun",
+        "verse": "Nada"
 
        },
        {
         "id": 11,
         "nombre":"Nada aun",
         "apellido":"Nada aun",
-        "cargo": "Nada aun",
-        "equipo": "Nada aun",
+        "cargo": "Lider Diaconados",
+        "equipo": "Diaconado",
         "vision": "Nada aun",
         "mision": "Nada aun",
-        "pasaje": "Nada aun"
+        "pasaje": "Nada aun",
+        "verse": "Nada"
 
        },
        {
         "id": 12,
         "nombre":"Nada aun",
         "apellido":"Nada aun",
-        "cargo": "Nada aun",
-        "equipo": "Nada aun",
+        "cargo": "Tesorera",
+        "equipo": "Tesorera",
         "vision": "Nada aun",
         "mision": "Nada aun",
-        "pasaje": "Nada aun"
-
-       },
-       {
-        "id": 13,
-        "nombre":"Nada aun",
-        "apellido":"Nada aun",
-        "cargo": "Nada aun",
-        "equipo": "Nada aun",
-        "vision": "Nada aun",
-        "mision": "Nada aun",
-        "pasaje": "Nada aun"
-
-       },
-       {
-        "id": 14,
-        "nombre":"Nada aun",
-        "apellido":"Nada aun",
-        "cargo": "Nada aun",
-        "equipo": "Nada aun",
-        "vision": "Nada aun",
-        "mision": "Nada aun",
-        "pasaje": "Nada aun"
+        "pasaje": "Nada aun",
+        "verse": "Nada"
 
        }
     ]

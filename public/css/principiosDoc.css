@@ -1,0 +1,22 @@
+.atc-p-d{
+    background-image: url(/public/images/bg-10.png);
+    background-size: cover;
+    background-position: right;
+   
+}
+.p-d-title{
+    color: p-d-title;
+}
+
+.d-p-list-one{
+    color: var(--blue-600);
+    font-weight: 600;
+}
+.p-d-list{
+    color: black;
+    font-weight: 700;
+}
+.p-d-parrafo{
+    color: rgb(113, 0, 170);
+    font-weight: 500;
+}

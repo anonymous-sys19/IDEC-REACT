@@ -26,10 +26,11 @@
         padding: 1rem 3rem;
 
         && p {
-            background: #A7CFDF;
-            background: linear-gradient(to right, #A7CFDF 0%, #23538A 100%);
+            background: #1E2528;
+            background: linear-gradient(to right, #1E2528 0%, #23538A 52%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+            
 
         }
     }

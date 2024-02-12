@@ -1,0 +1,41 @@
+.borders{
+    /* border-left: 1px solid rgba(104, 104, 104, 0.375);
+    border-right: 1px solid rgba(104, 104, 104, 0.357); */
+    width: 80%;
+}
+.title-ms{
+    background-color: rgba(5, 5, 173, 0);
+    border-bottom: 4px double rgba(128, 128, 128, 0.424);
+    && h2{
+        background-image: url(/images/20_30_conex.jpeg);
+        background-size: cover;
+        background-position: center;
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: 900;
+    }
+
+}
+
+.cont1{
+    text-align: center;
+}
+.title-m-v{
+    color: var(--blue-800);
+    /* background-image: url(/images/20_30_conex.jpeg);
+    background-size: cover;
+    background-position: center;
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: 900; */
+}
+
+
+.ms-cl{
+    color: rgb(55, 58, 67);
+    
+}
