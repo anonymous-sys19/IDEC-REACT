@@ -54,6 +54,9 @@ const captureAndDownloadImage = async () => {
 
 const dailyVerseStyle = {
     backgroundImage: `url(${currentImagePath})`,
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    fontWeight: 700
     // Aquí puedes agregar otros estilos necesarios
 };
 return (

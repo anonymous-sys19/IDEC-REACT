@@ -51,14 +51,10 @@ nav {
     padding:2px;
 }
 /* Service Section */
-.sec-daily{
-    background-image: url(/public//images/3.png);
-    background-repeat: no-repeat;
-    background-size: cover;
+/* .sec-daily{
+    
 
-    font-weight: 700;
-
-}
+} */
 .dailyVerse a{
     font-weight: 900;
 }
