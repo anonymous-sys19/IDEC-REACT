@@ -13,6 +13,7 @@ function logoNavMenu() {
             src="/images/logo-idec.png"
 
             alt="logo"
+            loading='lazy'
           />
         </div>
         <div className="loading">

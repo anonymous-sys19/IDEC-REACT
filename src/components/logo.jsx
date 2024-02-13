@@ -1,3 +1,4 @@
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 function Logo() {
 
@@ -5,11 +6,12 @@ function Logo() {
     <>
       <div className="contLog">
         <div >
-          <img
+          <LazyLoadImage
             className="logoidecCola animate__animated animate__zoomInLeft"
             src="/SVG/logo-idec.svg"
             width="100px"
             alt="logo"
+            
           />
         </div>
         <div className="loading">

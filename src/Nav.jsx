@@ -32,6 +32,7 @@ import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 import Tooltip from 'react-bootstrap/Tooltip';
 import { BrowserRouter, Route, Link, Switch, useHistory } from 'react-router-dom' //REAC-DOM
 import { useEffect, useState } from 'react';
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
 
 
 const MenuNavbar = () => {
@@ -64,7 +65,9 @@ const MenuNavbar = () => {
 
     <BrowserRouter>
       <header>
-        <Logo />
+        <LazyLoadComponent>
+          <Logo />
+        </LazyLoadComponent>
         {['xl'].map((expand) => (
           <Navbar key={expand} expand={expand} className="mb-3">
             <Container fluid>
@@ -217,13 +220,13 @@ const MenuNavbar = () => {
           <Biblia />
         </Route>
         <Route path='/historia' >
-            <Historia/>
+          <Historia />
         </Route>
         <Route path='/conexion'>
           <Conexion2030 />
         </Route>
         <Route path='/mision'>
-          <MisionAndVision/>
+          <MisionAndVision />
         </Route>
         <Route path='/declaracion-de-fe'>
           <DeclaracionDFe />

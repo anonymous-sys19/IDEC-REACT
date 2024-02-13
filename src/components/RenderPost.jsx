@@ -1,11 +1,12 @@
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import TextoConNegritaAutomatica from '../components/NegritaAuto';
 import { FaUser, FaEllipsisV, FaShare } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AiTwotoneMessage, AiTwotoneLike } from 'react-icons/ai';
-
-const RenderPost = ({ image, nUser }) => {
+import { LazyLoadImage, trackWindowScroll } from 'react-lazy-load-image-component';
+const RenderPost = ({ image, nUser, scrollPosition }) => {
     return (
         <div className="Public container" key={image.name}>
             <div className='public'>
@@ -19,7 +20,7 @@ const RenderPost = ({ image, nUser }) => {
                                             {image.avatar_url ? (
 
 
-                                                <img src={image.avatar_url} className='PublicAvatar' />
+                                                <LazyLoadImage src={image.avatar_url} className='PublicAvatar' scrollPosition={scrollPosition} />
                                             ) : (
 
                                                 <FaUser className='PublicAvatar' />
@@ -53,7 +54,7 @@ const RenderPost = ({ image, nUser }) => {
                         {/* <hr size="1px" color="black" /> */}
                     </span>
                     <div className="container containerImg">
-                        <img className='imgPublic' src={image.url} alt={image.url} />
+                        <LazyLoadImage className='imgPublic' src={image.url} alt={image.url} scrollPosition={scrollPosition} />
 
                     </div>
                 </blockquote>
@@ -91,4 +92,4 @@ const RenderPost = ({ image, nUser }) => {
     )
 }
 
-export default RenderPost
+export default trackWindowScroll(RenderPost)

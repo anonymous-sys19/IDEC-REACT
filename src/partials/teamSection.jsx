@@ -1,8 +1,12 @@
+/* eslint-disable react-refresh/only-export-components */
+/* eslint-disable react/prop-types */
 import 'bootstrap/dist/css/bootstrap.min.css';
 import SocialMedia from '../components/Social';
 import '/public/css/TeamSection.css'
 import { useState, useEffect } from 'react';
-const TeamSection = () => {
+import { LazyLoadImage, trackWindowScroll } from 'react-lazy-load-image-component';
+
+const TeamSection = ({scrollPosition}) => {
     const [data, setData] = useState(null)
     useEffect(() => {
         fetch('/json/lideres.json')
@@ -29,9 +33,9 @@ const TeamSection = () => {
                             <div className="team">
                                 <div className="team-img">
                                    {item.image ? (
-                                     <img className='teamImg' src={item.image} alt="Team Image" />
+                                     <LazyLoadImage className='teamImg' src={item.image} alt="Team Image" scrollPosition={scrollPosition}  />
                                    ): (
-                                    <img className='teamImg' src="/images/logo-idec.png" alt="Team Image" />
+                                    <LazyLoadImage className='teamImg' src="/images/logo-idec.png" alt="Team Image" scrollPosition={scrollPosition}  />
                                    )}
                                 </div>
                                 <div className="team-content">
@@ -56,4 +60,4 @@ const TeamSection = () => {
     )
 }
 
-export default TeamSection;
+export default trackWindowScroll(TeamSection);

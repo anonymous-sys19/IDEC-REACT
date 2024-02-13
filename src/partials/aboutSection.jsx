@@ -1,8 +1,11 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable no-undef */
 
 import { useEffect, useState } from "react";
+import { LazyLoadImage, trackWindowScroll } from "react-lazy-load-image-component";
 
-const AboutSection = () => {
+const AboutSection = ({scrollPosition}) => {
     const ImgResponsiv = {
         width: 'initial',
         height: '-webkit-fill-available',
@@ -23,11 +26,12 @@ const AboutSection = () => {
     const renderTimelineItem = (item, index) => (
         <li key={index} className={index % 2 === 1 ? 'timeline-inverted' : ''}>
             <div className="timeline-image">
-                <img
+                <LazyLoadImage
                     style={ImgResponsiv}
                     className=""
                     src={item.image}
                     alt=""
+                    scrollPosition={scrollPosition}
                 />
             </div>
             <div className="timeline-panel">
@@ -109,4 +113,4 @@ const AboutSection = () => {
 
 
 };
-export default AboutSection;
+export default trackWindowScroll(AboutSection);

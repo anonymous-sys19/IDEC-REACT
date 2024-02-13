@@ -11,13 +11,13 @@ const Card = ({ email, username, avatar, publicaciones, fotos, videos, treePount
             <div className="card">
                 <div className="card__img" >
                     <svg width="100%" xmlns="http://www.w3.org/2000/svg">
-                        <image href={"https://wallpapercave.com/wp/wp12509690.jpg"} />
+                        <image href={"https://wallpapercave.com/wp/wp12509690.jpg"} loading="lazy" />
                     </svg>
                 </div>
                 <div className='Cont-card-icons-more'>
                     <div className="card__avatar">
                         <svg style={{ borderRadius: '100px' }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
-                            <image href={avatar} width="100%" height="100%" />
+                            <image href={avatar} width="100%" height="100%" loading="lazy"/>
                         </svg>
                     </div>
                     <div>

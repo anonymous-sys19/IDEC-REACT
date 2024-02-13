@@ -1,3 +1,5 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react/jsx-key */
 /* eslint-disable no-unused-vars */
 import { Link } from 'react-router-dom';
@@ -9,10 +11,11 @@ import { useState, useEffect } from 'react';
 import TextoConNegritaAutomatica from '../components/NegritaAuto';
 
 import { supabase } from './Auth/supabaseClient';
+import { LazyLoadImage, trackWindowScroll } from 'react-lazy-load-image-component';
 
 /* eslint-disable react/no-unknown-property */
 
-export default function Publicaciones() {
+const  Publicaciones =({ scrollPosition }) => {
     //Detect Nregita
 
     const [comment, setComment] = useState('');
@@ -102,7 +105,7 @@ export default function Publicaciones() {
                                                         {image.avatar_url ? (
 
 
-                                                            <img src={image.avatar_url} className='PublicAvatar' />
+                                                            <LazyLoadImage src={image.avatar_url} className='PublicAvatar' scrollPosition={scrollPosition} />
                                                         ) : (
 
                                                             <FaUser className='PublicAvatar' />
@@ -136,7 +139,8 @@ export default function Publicaciones() {
                                     {/* <hr size="1px" color="black" /> */}
                                 </span>
                                 <div className="container containerImg">
-                                    <img className='imgPublic' src={image.url} alt={image.url} />
+                                    {/* <img   /> */}
+                                    <LazyLoadImage className='imgPublic' src={image.url} alt={image.url} scrollPosition={scrollPosition} />
 
                                 </div>
                             </blockquote>
@@ -182,3 +186,5 @@ export default function Publicaciones() {
 
 
 }
+
+export default trackWindowScroll(Publicaciones);

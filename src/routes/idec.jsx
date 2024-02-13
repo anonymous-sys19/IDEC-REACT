@@ -3,8 +3,8 @@
 import AboutSection from '../partials/aboutSection';
 import ServiceSection from '../partials/serviceSection';
 import TeamSection from '../partials/teamSection';
-// import { Helmet } from 'react-helmet';
 import Portafolio from '../partials/portafolio';
+import { LazyLoadComponent, LazyLoadImage } from 'react-lazy-load-image-component';
 const Idec = () => {
 
 
@@ -12,10 +12,10 @@ const Idec = () => {
   return (
     <>
       <div className="contHeaderFather">
-       
+
         <div className="contHeader">
-          <img className='imgContainer' src="/SVG/logo-idec.svg" alt="" />
-        
+          <LazyLoadImage className='imgContainer' src="/SVG/logo-idec.svg" alt="" />
+
           <div className='container'>
             <div>
               <p className='idec intro-text'>
@@ -34,10 +34,19 @@ const Idec = () => {
         </div >
 
       </div >
-      <ServiceSection />
-      <Portafolio />
-      <AboutSection />
-      <TeamSection />
+      <LazyLoadComponent>
+        <ServiceSection />
+      </LazyLoadComponent>
+
+      <LazyLoadComponent>
+        <Portafolio />
+      </LazyLoadComponent>
+      <LazyLoadComponent>
+        <AboutSection />
+      </LazyLoadComponent>
+      <LazyLoadComponent>
+        <TeamSection />
+      </LazyLoadComponent>
     </>
   );
 };

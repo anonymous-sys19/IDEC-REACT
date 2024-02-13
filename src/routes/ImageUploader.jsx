@@ -216,14 +216,14 @@ const Upload = () => {
                 <div className='container-Upload'>
                   {isAuthenticated ? (
                     <div>
-                      {user?.picture && <img className='imgNav' src={user?.picture} alt={user} />}
+                      {user?.picture && <img className='imgNav' src={user?.picture} alt={user} loading='lazy'/>}
                     </div>
                   ) : (
                     <div style={{
                       margin: '0 0 0 10px',
                       bottom: '10px',
                     }}>
-                      {<img className='imgNav' src="/" alt='' />}
+                      {<img className='imgNav' src="/" alt='' loading='lazy' />}
                     </div>
                   )}
 
