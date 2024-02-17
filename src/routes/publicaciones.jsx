@@ -12,10 +12,11 @@ import TextoConNegritaAutomatica from '../components/NegritaAuto';
 
 import { supabase } from './Auth/supabaseClient';
 import { LazyLoadImage, trackWindowScroll } from 'react-lazy-load-image-component';
+import ShareButton from '../components/ShareComponente';
 
 /* eslint-disable react/no-unknown-property */
 
-const  Publicaciones =({ scrollPosition }) => {
+const Publicaciones = ({ scrollPosition }) => {
     //Detect Nregita
 
     const [comment, setComment] = useState('');
@@ -155,9 +156,10 @@ const  Publicaciones =({ scrollPosition }) => {
                                     <button onClick={handleCommentClick}> <AiTwotoneMessage /> Coment</button>
                                 </div>
                                 <div className="share">
-                                    <button onClick={() => {
-                                        alert(true)
-                                    }}> <FaShare /> Compartir</button>
+                                    {/*  */}
+                                    <ShareButton title={`*${image.name_Username}*`}
+                                        description={image.description}
+                                        url={URL} />
                                 </div>
                             </div>
                             <hr size="2px" color="black" />

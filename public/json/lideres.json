@@ -92,26 +92,33 @@
        {
         "id": 8,
         "nombre":"Sindy",
+        "image": "",
         "apellido":"Mayorga Baltodano" ,
         "cargo": "Lider Infantil",
         "equipo": "Ministerio Infantil",
         "vision": "Guiar a los niños hacia una conexión más profunda con Jesucristo, cultivando un ambiente donde florezcan los valores bíblicos y se fortalezca su relación espiritual, como un hermoso jardín que refleje la luz divina.",
         "mision": "Empoderar al equipo de trabajo para que, a través de la enseñanza y el ejemplo, inspiren a la niñez a crecer en el conocimiento y amor hacia Jesucristo, desenmarañando las redes de malas influencias y sembrando semillas de verdad y bondad en sus corazones, como un río que fluye con aguas claras y revitalizantes. \n Que vuestra luz alumbre delante de los hombres, para que vean vuestras buenas obras y glorifiquen a vuestro Padre que está en los cielos. (Mateo 5:16)",
         "pasaje": "Nada aun",
-        "verse": "Nada"
+        "verse": "Nada",
+        "facebook": "",
+        "instagran": "",
+        "whatsapp": ""
 
        },
        {
         "id": 9,
-        "nombre":"Nada aun",
-        "apellido":"Nada aun",
-        "cargo": "Lider Intersexion",
-        "equipo": "Intersexión",
+        "image": "/public/images/LideresEquipo/MariaEsther.jpg",
+        "nombre":"Maria Esther",
+        "apellido":"Gomez",
+        "cargo": "Lider de Intersecion",
+        "equipo": "Interseción",
         "vision": "Nada aun",
         "mision": "Nada aun",
-        "pasaje": "Nada aun",
-        "verse": "Nada"
-
+        "pasaje": "Clama a mí, y yo te responderé, y te enseñaré cosas grandes y ocultas que tú no conoces.",
+        "verse": "Jeremias 33:3",
+        "facebook": "",
+        "instagran": "",
+        "whatsapp": ""
        },
        {
         "id": 10,
@@ -122,17 +129,17 @@
         "vision": "Nada aun",
         "mision": "Nada aun",
         "pasaje": "Nada aun",
-        "verse": "Nada"
+        "verse": "Nada aun"
 
        },
        {
         "id": 11,
-        "nombre":"Nada aun",
-        "apellido":"Nada aun",
+        "nombre":"Francella",
+        "apellido":"",
         "cargo": "Lider Diaconados",
         "equipo": "Diaconado",
-        "vision": "Nada aun",
-        "mision": "Nada aun",
+        "vision": "Ser un cuerpo de siervos comprometidos, elegidos por Dios, que crece no solo en número sino en la calidad de su servicio. Visualizamos un diaconado que refleja amor, humildad y disposición, como un viñedo que produce frutos abundantes en la viña del Señor.",
+        "mision": "Guiados por el amor a Dios y a su obra, nos dedicamos a servir con corazones dispuestos y humildes. Nuestro anhelo es crecer en cantidad, pero de manera más significativa, en calidad, sirviendo de acuerdo con la voluntad de Dios, como manos y pies que realizan Su obra en la tierra. \r 'Sirvan unos a otros con amor. Toda la ley se cumple en una sola palabra: Ama a tu prójimo como a ti mismo.' (Gálatas 5:13-14)",
         "pasaje": "Nada aun",
         "verse": "Nada"
 
