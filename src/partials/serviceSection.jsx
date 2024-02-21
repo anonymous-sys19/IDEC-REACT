@@ -20,7 +20,7 @@ const ServiceSection = () => {
 
 
         // Obtén las rutas de las imágenes desde tu JSON (suponiendo que es un objeto con una propiedad "imagePaths")
-        const jsonImagePath = "/public/json/imagespathstoDownload.json"; // Reemplaza con la ruta correcta de tu JSON
+        const jsonImagePath = "/json/imagespathstoDownload.json"; // Reemplaza con la ruta correcta de tu JSON
         fetch(jsonImagePath)
             .then(response => response.json())
             .then(data => {
@@ -29,6 +29,7 @@ const ServiceSection = () => {
                 // Cambiar la imagen de fondo de forma aleatoria
                 const randomImagePath = imagePaths[Math.floor(Math.random() * imagePaths.length)];
                 setCurrentImagePath(randomImagePath);
+
             })
             .catch(error => console.error('Error fetching image paths:', error));
 
@@ -52,7 +53,7 @@ const ServiceSection = () => {
         link.click();
     };
     const dailyVerseStyle = {
-        backgroundImage: `url(${currentImagePath}`,
+        backgroundImage: `url(${currentImagePath})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         fontWeight: 700
