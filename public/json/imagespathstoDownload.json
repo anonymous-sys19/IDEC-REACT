@@ -1,9 +1,8 @@
 {
     "imagePaths": [
-      "/images/bgVerseDaily/1.png",
-      "/images/bgVerseDaily/2.png",
-      "/images/bgVerseDaily/3.png"
-      
+      "'/images/bgVerseDaily/1.png'",
+      "'/images/bgVerseDaily/2.png'",
+      "'/images/bgVerseDaily/3.png'"     
     ]
   }
   
