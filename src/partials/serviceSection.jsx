@@ -52,7 +52,7 @@ const ServiceSection = () => {
         link.click();
     };
     const dailyVerseStyle = {
-        backgroundImage: `url(${currentImagePath})`,
+        backgroundImage: `url(${currentImagePath}`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         fontWeight: 700
