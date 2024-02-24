@@ -1,28 +1,22 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable no-undef */
-
 import { useEffect, useState } from "react";
 import { LazyLoadImage, trackWindowScroll } from "react-lazy-load-image-component";
-
 const AboutSection = ({scrollPosition}) => {
     const ImgResponsiv = {
         width: 'initial',
         height: '-webkit-fill-available',
         margin: 'unset',
         // padding: '0.3rem',
-        borderRadius: 'inherit',
-        
+        borderRadius: 'inherit', 
     }
-
     const [data, setData] = useState(null);
-
     useEffect(() => {
         fetch('/json/lideres.json')
             .then(response => response.json())
             .then(jsonData => setData(jsonData))
     }, []);
-
     const renderTimelineItem = (item, index) => (
         <li key={index} className={index % 2 === 1 ? 'timeline-inverted' : ''}>
             <div className="timeline-image">
@@ -45,15 +39,11 @@ const AboutSection = ({scrollPosition}) => {
                     ) : (
                         item.vision
                     )}</p>
-
                     <p className="text-muted"><h5>Mision</h5> {item.mision}</p>
                 </div>
             </div>
         </li>
     );
-
-
-
     return (
         <section id="about">
             <div className="container">
@@ -79,10 +69,7 @@ const AboutSection = ({scrollPosition}) => {
                                 width: '70%'
                             }}>
                                 Porque el SEÑOR tu Dios le ha escogido a él y a sus hijos de <b>entre</b> todas tus tribus, para que esté <b>allí</b> y sirva en el nombre del SEÑOR, para siempre.
-
                             </p>
-
-
                         </li>
                     </div>
                 </div>
@@ -108,9 +95,6 @@ const AboutSection = ({scrollPosition}) => {
                 </div>
             </div>
         </section>
-
     )
-
-
 };
 export default trackWindowScroll(AboutSection);

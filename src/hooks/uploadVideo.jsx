@@ -7,7 +7,6 @@ export const useVideoUploader = () => {
     const handleVideoChange = (event) => {
         setVideo(event.target.files[0]);
     };
-
     const handleVideoUpload = async () => {
         if (video) {
             const { data, error } = await supabase.storage.from('videos').upload(video.name, video);
@@ -18,7 +17,6 @@ export const useVideoUploader = () => {
             }
         }
     };
-
     return {
         video,
         handleVideoChange,

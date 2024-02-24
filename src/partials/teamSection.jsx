@@ -5,29 +5,20 @@ import SocialMedia from '../components/Social';
 import '/public/css/TeamSection.css'
 import { useState, useEffect } from 'react';
 import { LazyLoadImage, trackWindowScroll } from 'react-lazy-load-image-component';
-
 const TeamSection = ({ scrollPosition }) => {
-    const [data, setData] = useState(null)                             //#Greyvin
+    const [data, setData] = useState(null)
     useEffect(() => {
         fetch('/json/lideres.json')
             .then(response => response.json())
             .then(jsonData => setData(jsonData))
             .catch(error => console.error('Error al cargar los datos:', error));
-
     }, []);
-
-
     return (
-
-        <div className="containerTeam" id='containerTeam'>         {/* Greyvin */}
-
+        <div className="containerTeam" id='containerTeam'>
             <div className="section-title">
                 <h1>{data ? data.title : 'Equipo de Lideres'}</h1>
             </div>
-
-
             <div className="rowTeam">
-
                 {data &&
                     data.items.map(item => (
                         <div className="columnTeam" key={item} id='containerTeam'>
@@ -54,11 +45,7 @@ const TeamSection = ({ scrollPosition }) => {
                         </div>
                     ))}
             </div>
-
-
         </div>
-
     )
 }
-
 export default trackWindowScroll(TeamSection);

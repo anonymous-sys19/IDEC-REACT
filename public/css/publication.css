@@ -37,7 +37,7 @@
         margin: 1rem;
     }
 
-    && .comment-input-container{
+    && .comment-input-container {
         padding: 0 10%;
     }
 }
@@ -111,15 +111,16 @@
 
     && div button {
         background-color: rgb(255, 255, 255);
-        font-weight: 700;
+        font-weight: 600;
         border: 0;
         width: auto;
         padding: auto;
         margin: auto;
+        font-size: 1.4rem;
+        display: flow;
 
         &&:hover {
             background: rgb(196, 196, 196);
         }
     }
 }
-

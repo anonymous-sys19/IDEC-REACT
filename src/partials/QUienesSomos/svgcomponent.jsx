@@ -11,9 +11,7 @@ function SvgComponent() {
 
                 </div>
             </div>
-
         </div>
     )
 }
-
 export default SvgComponent;

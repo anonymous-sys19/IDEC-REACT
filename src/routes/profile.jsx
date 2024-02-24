@@ -1,8 +1,9 @@
+/* eslint-disable react/jsx-key */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 
 
-import Card from '../components/CardAvatar';
+import Card from '../components/Publications/CardAvatar';
 import { useEffect, useState } from 'react';
 import { supabase } from '../routes/Auth/supabaseClient'
 
@@ -11,8 +12,7 @@ import Upload from './ImageUploader';
 // FIXME:  importo el context de session
 import { UserAuth } from './Auth/AuthContext';
 
-import RenderPost from '../components/RenderPost';
-
+import CommentInput from '../components/Publications/CommentInput';
 
 function Perfil() {
 
@@ -52,7 +52,7 @@ function Perfil() {
     fetchUser();
   }, [userId]);
   //  FIXME: Ahora depende del cambio en el parámetro de la URL
- 
+
 
 
 
@@ -122,35 +122,50 @@ function Perfil() {
             <>
 
               <Upload />
-
               <>
-                <article>
+              <article>
+                {imageList.map((image) =>
+                  <>
+                    {nUser.user_id == image.uid ? (
+                      <div className="Public container">
+                        < CommentInput
+                          uid={image.uid}
+                          name_Username={image.name_Username}
+                          createdAt={image.createdAt}
+                          description={image.description}
+                          url={image.url}
+                          avatar_url={image.avatar_url}
+                        />
 
-                  {imageList.map((image) =>
-                    <>
-                      {nUser.user_id == image.uid ? (
 
-                        <RenderPost key={image.name} image={image} nUser={nUser} />
-                      ) : ""}
-                    </>
-                  )}
-
-                </article>
-              </>
+                      </div>
+                    ) : ""}
+                  </>
+                )}
+              </article>
+            </>
             </>
           ) : (
             <>
               <article>
-
                 {imageList.map((image) =>
                   <>
                     {nUser.user_id == image.uid ? (
-                      <RenderPost key={image.name} image={image} nUser={nUser} />
+                      <div className="Public container">
+                        < CommentInput
+                          uid={image.uid}
+                          name_Username={image.name_Username}
+                          createdAt={image.createdAt}
+                          description={image.description}
+                          url={image.url}
+                          avatar_url={image.avatar_url}
+                        />
 
+
+                      </div>
                     ) : ""}
                   </>
                 )}
-
               </article>
             </>
           )}

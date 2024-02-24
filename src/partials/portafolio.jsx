@@ -37,8 +37,6 @@ const Portafolio = () => {
       </div>
     );
   };
-
-
   return (
     <>
       <div className="">
@@ -52,8 +50,6 @@ const Portafolio = () => {
         </a>{' '}
         Greyvin Mayorga
       </div>
-
-   
     </>
   )
 }

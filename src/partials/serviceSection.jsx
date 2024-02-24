@@ -3,13 +3,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import html2canvas from 'html2canvas';
-
+import { MdDownloadForOffline } from "react-icons/md";
 const ServiceSection = () => {
-
     const [currentVerseText, setCurrentVerseText] = useState('');
     const [currentImagePath, setCurrentImagePath] = useState('');
-
-
     useEffect(() => {
         // Agrega el script al DOM
         const script = document.createElement('script');
@@ -17,33 +14,23 @@ const ServiceSection = () => {
         script.async = true;
         script.defer = true;
         document.getElementById('dailyVersesWrapper').appendChild(script);
-
-
         // Obtén las rutas de las imágenes desde tu JSON (suponiendo que es un objeto con una propiedad "imagePaths")
         const jsonImagePath = "/json/imagespathstoDownload.json"; // Reemplaza con la ruta correcta de tu JSON
         fetch(jsonImagePath)
             .then(response => response.json())
             .then(data => {
                 const imagePaths = data.imagePaths || [];
-
                 // Cambiar la imagen de fondo de forma aleatoria
                 const randomImagePath = imagePaths[Math.floor(Math.random() * imagePaths.length)];
                 setCurrentImagePath(randomImagePath);
-
             })
             .catch(error => console.error('Error fetching image paths:', error));
-
-
-
         // Limpia el script al desmontar el componente
-
-        return () => {
-            document.getElementById('dailyVersesWrapper').removeChild(script);
-        };
+        // return () => {
+        //     document.getElementById('dailyVersesWrapper').removeChild(script);
+        // };
     }, []);
-
     const dailyVersesRef = useRef(null);
-
     const captureAndDownloadImage = async () => {
         const canvas = await html2canvas(dailyVersesRef.current);
         const imgData = canvas.toDataURL('image/png');
@@ -57,11 +44,9 @@ const ServiceSection = () => {
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
         fontWeight: 700
-        // Aquí puedes agregar otros estilos necesarios
     };
     return (
         <section id="services">
-
             <div className="container">
                 <div className="row">
                     <div className="col-lg-12 text-center">
@@ -73,19 +58,21 @@ const ServiceSection = () => {
                             </section>
                             <button style={
                                 {
-                                    'background': 'aquamarine',
-                                    'color': 'black',
-                                    'border': 'none',
-
-                                }
-                            } onClick={captureAndDownloadImage}>Capturar imagen</button>
+                                    background: '#ffffff',
+                                    color: '#1cb389',
+                                    border: 'none',
+                                    borderRadius: '100px',
+                                    fontSize: '2.3rem',
+                                    padding: 0,
+                                    display: 'flex',
+                                    float: 'right'
+                                } 
+                            } onClick={captureAndDownloadImage}> < MdDownloadForOffline  /> </button>
                             <Helmet>
                                 <script async defer src="https://dailyverses.net/get/verse.js?language=nvi"></script>
                             </Helmet>
                         </div>
-
                         {/* <iframe width="500px" scrolling="no" height="400px" frameborder="0" src="https://www.bibliatodo.com/es/online/versiculo-del-dia"></iframe> */}
-
                     </div>
                 </div>
                 <div className="row text-center">
@@ -95,10 +82,10 @@ const ServiceSection = () => {
                             <i className="glyphicon glyphicon-tree-conifer"></i>
                         </span>
                         <h4 className="service-heading">
-                            Here is a pokok
+                            Su origen
                         </h4>
                         <p className="text-muted">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
+                            Su origen como Iglesia en el en estricto sentido de la palabra.Este hecho sin duda alguna ocurrió el día del Pentecostés según se relata en la Biblia <b> Hechos capitulo 2</b>
                         </p>
                     </div>
                     <div className="col-md-4">
@@ -107,10 +94,10 @@ const ServiceSection = () => {
                             <i className="glyphicon glyphicon-heart"></i>
                         </span>
                         <h4 className="service-heading">
-                            Heres a heart
+                            La Cruz
                         </h4>
                         <p className="text-muted">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
+                            Representa que como iglesia creemos en jesucristo que fué crusificado en una cruz y resucitó al tercer dia de entre los miertos.
                         </p>
                     </div>
                     <div className="col-md-4">
@@ -119,10 +106,22 @@ const ServiceSection = () => {
                             <i className="glyphicon glyphicon-tint"></i>
                         </span>
                         <h4 className="service-heading">
-                            Waterfall maybe?
+                            La llama
                         </h4>
                         <p className="text-muted">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
+                            Representa que como iglesia creemos en el Bautismo del Espiritu Santo, que empodera a la iglesia para cumplir con la gran comisión
+                        </p>
+                    </div>
+                    <div className="col-md-4">
+                        <span className="fa-stack fa-4x">
+                            <i className="fa fa-circle fa-stack-2x text-primary"></i>
+                            <i className="glyphicon glyphicon-tint"></i>
+                        </span>
+                        <h4 className="service-heading">
+                            ¿Sabias que.?
+                        </h4>
+                        <p className="text-muted">
+                            Toda la igleisa de Dios debe usar este Logo según nuestro Estatuto
                         </p>
                     </div>
                 </div>
@@ -130,5 +129,4 @@ const ServiceSection = () => {
         </section >
     )
 }
-
 export default ServiceSection;
