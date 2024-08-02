@@ -30,7 +30,6 @@ const Publicaciones = () => {
                         createdAt: imageData.created_at,
                         avatar_url: imageData.avatarUrl,
                         name_Username: imageData.nameUser,
-                        liked: imageData.liked
                     };
                 } catch (error) {
                     console.error('Error al procesar la imagen:', error.message);

@@ -13,14 +13,36 @@ import { AiTwotoneLike } from "react-icons/ai";
 import { LazyLoadImage, trackWindowScroll } from 'react-lazy-load-image-component';
 
 
-import { supabase } from "../../routes/Auth/supabaseClient";
 
 // Is autenticated
 import { UserAuth } from "../../routes/Auth/AuthContext";
-// import { image } from "html2canvas/dist/types/css/types/image";
 
+
+const formatLikes = (likes) => {
+    if (likes >= 1000000) {
+        return (likes / 1000000).toFixed(1).replace('.', ',') + 'M';
+    } else if (likes >= 1000) {
+        return (likes / 1000).toFixed(1).replace('.', ',') + 'k';
+    } else {
+        return likes.toString();
+    }
+}; //< liked ? liked : liked
+
+const generateRandomComments = () => {
+    const comments = [
+        "Great post! completely agree with you Well written! completely agree with you",
+        "I completely agree with you. Well written! completely agree with you",
+        "Thanks for sharing! completely agree with you",
+        "Interesting perspective. Well written! completely agree with you",
+        "Well written! completely agree with you",
+        "I learned something new today completely agree with you."
+    ];
+
+    return comments[Math.floor(Math.random() * comments.length)];
+};
+// 
 const CommentInput = ({ liked, scrollPosition, uid, name_Username, createdAt, description, url, avatar_url }) => {
-
+    liked = Math.floor(Math.random() * 1200000);
     const { user } = UserAuth();
     const isAuthenticated = !!user
 
@@ -29,30 +51,10 @@ const CommentInput = ({ liked, scrollPosition, uid, name_Username, createdAt, de
     const [isCommentVisible, setCommentVisible] = useState(false);
 
 
-
-    // Likes
-    const [like, setLike] = useState(liked);
-
-    const handleLike = async () => {
-        // Actualizar el estado local
-        setLike(like + 1);
-
-        // Enviar la actualización a la base de datos
-        try {
-            const { data: imageData, error: imageError } = await supabase
-                .from('idectableimages')
-                .upsert([{ liked: like + 1 }],
-                    { onConflict: ['url'] }
-                )
+    // Obtener un comentario aleatorio
+    const randomComment = generateRandomComments();
 
 
-            if (imageError) {
-                console.error('Error al actualizar los likes:', imageError.message);
-            }
-        } catch (error) {
-            console.error('Error al actualizar los likes:', error.message);
-        }
-    };
 
     // End likes
 
@@ -124,20 +126,25 @@ const CommentInput = ({ liked, scrollPosition, uid, name_Username, createdAt, de
                         <LazyLoadImage className='imgPublic' src={url} alt={url} scrollPosition={scrollPosition} />
 
                     </div>
+                    <div className="d-flex justify-content-around">
+                        <span className="mx-4"> {formatLikes(liked)} Likes</span>
+                        <span className="mx-4" > 2 comentarios</span>
+                        <span className="mx-4">5 veces compartido</span>
+                    </div>
                 </blockquote>
                 <hr size="2px" color="black" />
                 <div className='checks'>
                     <div className='like'>
-                        <button onClick={handleLike}>
+                        <button onClick={""}>
                             {isAuthenticated ? (
                                 <span style={{ color: liked ? 'blue' : 'black' }}>
                                     <AiTwotoneLike />
 
-                                    <>{liked} Likes</>
+                                    <>  Me gusta</>
 
                                 </span>
                             ) : (
-                                <>Like</>
+                                <span>Like</span>
                             )}
                         </button>
                     </div>
@@ -162,8 +169,52 @@ const CommentInput = ({ liked, scrollPosition, uid, name_Username, createdAt, de
                             onChange={handleInputChange}
                             onKeyPress={hanldeEnterPress}
                         />
+                        <hr size='2px' color="black" />
+                        {/* Coments Part */}
+                        <div className='ProfileItems commentBlubleAll' style={{}}>
+                            <div>
+                                {avatar_url ? (
+
+
+                                    <div className='UserDate'>
+                                        <LazyLoadImage src={avatar_url} style={{ width: '40px', borderRadius: "100px", padding: '0 5px 0 0' }} scrollPosition={scrollPosition} />
+                                        {/* <a href={`perfil/s/${image.uid}`}>{image.name_Username}</a> */}
+                                        <Link to={`/perfil/s/${uid}`}>  {name_Username}</Link>
+                                        <span style={{ width: '5px', color: '#9e9e9e' }} className="date">{' 12 junio 2024'}</span>
+                                    </div>
+                                ) : (
+
+                                    <FaUser className='PublicAvatar' />
+                                )
+                                }
+
+
+                            </div>
+
+                            {/* New comment */}
+                            <div className="BubleOfComment">
+                                <div className="container commentsBuble">
+                                    <span className="grey-700">{randomComment}</span>
+
+                                </div>
+                                <div className="ItemsComents">
+                                    <div className="ItemsCommentsReaction">
+                                        <div>
+                                            <Link>Me gusta</Link>
+                                        </div>
+                                        <div>
+                                            <Link> Responder</Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
                     </div>
                 )}
+
             </div>
 
         </>

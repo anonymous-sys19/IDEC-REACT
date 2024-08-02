@@ -215,6 +215,7 @@ const MenuNavbar = () => {
       <Switch>
         <Route path='/publico'>
           <Publicaciones />
+
         </Route>
         <Route path='/biblia'>
           <Biblia />

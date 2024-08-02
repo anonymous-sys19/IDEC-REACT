@@ -124,3 +124,37 @@
         }
     }
 }
+
+
+
+.commentBlubleAll{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+}
+.commentsBuble{
+    border-radius: 30px;
+    width: 70%;
+    /* border: 1px solid; */
+    text-align: center;
+    background: rgb(239, 250, 255);
+    -webkit-border-radius: 30px;
+    -moz-border-radius: 30px;
+    -ms-border-radius: 30px;
+    -o-border-radius: 30px;
+}
+
+.ItemsComents{
+    margin: 0 0 11px 0;
+}
+.ItemsCommentsReaction{
+    justify-content: flex-end;
+    display: flex;
+    color: rgb(207, 207, 207);
+    margin: 0 12px 0 0;
+    a {
+        margin: 0 12px;
+    }
+
+}
