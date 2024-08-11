@@ -11,6 +11,7 @@ import { AiTwotoneMessage } from "react-icons/ai";
 import { FaUser } from "react-icons/fa6";
 import { AiTwotoneLike } from "react-icons/ai";
 import { LazyLoadImage, trackWindowScroll } from 'react-lazy-load-image-component';
+import { LuSendHorizonal } from "react-icons/lu";
 
 
 
@@ -119,7 +120,7 @@ const CommentInput = ({ liked, scrollPosition, uid, name_Username, createdAt, de
                                 </TextoConNegritaAutomatica>
                             </li>
                         </div>
-                        {/* <hr size="1px" color="black" /> */}
+
                     </span>
                     <div className="container containerImg">
                         {/* <img   /> */}
@@ -149,7 +150,7 @@ const CommentInput = ({ liked, scrollPosition, uid, name_Username, createdAt, de
                         </button>
                     </div>
                     <div className="comment">
-                        <button onClick={handleCommentClick}> <AiTwotoneMessage /> Coment</button>
+                        <button onClick={handleCommentClick} type="button" > <AiTwotoneMessage /> Comentario</button>
                     </div>
                     <div className="share">
                         {/*  */}
@@ -160,58 +161,60 @@ const CommentInput = ({ liked, scrollPosition, uid, name_Username, createdAt, de
                 </div>
                 <hr size="2px" color="black" />
                 {isCommentVisible && (
-                    <div className="comment-input-container">
-                        <input
-                            className='commentInput'
-                            type="text"
-                            placeholder="Escribe tu comentario..."
-                            value={comment}
-                            onChange={handleInputChange}
-                            onKeyPress={hanldeEnterPress}
-                        />
-                        <hr size='2px' color="black" />
-                        {/* Coments Part */}
-                        <div className='ProfileItems commentBlubleAll' style={{}}>
-                            <div>
-                                {avatar_url ? (
+                    <div>
+                        <div className="comment-input-container">
+                            <div className="Content-Comment">
+                                <input
+                                    className='commentInput'
+                                    type="text"
+                                    placeholder="Escribe tu comentario..."
+                                    value={comment}
+                                    onChange={handleInputChange}
+                                    onKeyPress={hanldeEnterPress}
+                                />
+                                <button type="submit"> <LuSendHorizonal /></button>
+                            </div>
 
+                            <hr size='2px' color="black" />
+                            {/* Coments Part */}
+                            <div className='ProfileItems commentBlubleAll'>
+                                <div>
 
                                     <div className='UserDate'>
                                         <LazyLoadImage src={avatar_url} style={{ width: '40px', borderRadius: "100px", padding: '0 5px 0 0' }} scrollPosition={scrollPosition} />
-                                        {/* <a href={`perfil/s/${image.uid}`}>{image.name_Username}</a> */}
                                         <Link to={`/perfil/s/${uid}`}>  {name_Username}</Link>
                                         <span style={{ width: '5px', color: '#9e9e9e' }} className="date">{' 12 junio 2024'}</span>
                                     </div>
-                                ) : (
-
-                                    <FaUser className='PublicAvatar' />
-                                )
-                                }
 
 
-                            </div>
 
-                            {/* New comment */}
-                            <div className="BubleOfComment">
-                                <div className="container commentsBuble">
-                                    <span className="grey-700">{randomComment}</span>
+
 
                                 </div>
-                                <div className="ItemsComents">
-                                    <div className="ItemsCommentsReaction">
-                                        <div>
-                                            <Link>Me gusta</Link>
-                                        </div>
-                                        <div>
-                                            <Link> Responder</Link>
+
+                                {/* New comment */}
+                                <div className="BubleOfComment">
+                                    <div className="container commentsBuble">
+                                        <span className="grey-700">{randomComment}</span>
+
+                                    </div>
+                                    <div className="ItemsComents">
+                                        <div className="ItemsCommentsReaction">
+                                            <div>
+                                                <Link>Me gusta</Link>
+                                            </div>
+                                            <div>
+                                                <Link> Responder</Link>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
                             </div>
 
+
+
                         </div>
-
-
                     </div>
                 )}
 

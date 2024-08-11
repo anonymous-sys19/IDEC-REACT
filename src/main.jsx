@@ -20,7 +20,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 // import AppAuth from './routes/Auth/AppAuth.jsx'
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {fab} from '@fortawesome/free-brands-svg-icons';
-
+import '../global.css'
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import '@fortawesome/fontawesome-svg-core/styles.css';

@@ -1,8 +1,4 @@
-/*!
- * Start Bootstrap - Agency Bootstrap Theme (https://startbootstrap.com)
- * Code licensed under the Apache License v2.0.
- * For details, see http://www.apache.org/licenses/LICENSE-2.0.
- */
+
  @import url(https://db.onlinewebfonts.com/c/c0d4df0367d2ea6f199c859a94552346?family=ITC+Franklin+Gothic+LT+W04BkCm);
  @import url(https://db.onlinewebfonts.com/c/b6684916353e82c1651a481fc309b0d8?family=ITC+Franklin+Gothic+LT+W04+Bk);
  @import url(https://db.onlinewebfonts.com/c/f304002349031134b8ec9a32fca09c2f?family=ITC+Franklin+Gothic+LTW04DmXCm);
@@ -73,6 +69,9 @@ body {
         margin: 1rem 0 0 0;
         background-color: #d9def2ac;
         height: inherit;
+
+        padding: 1rem 0 0 0;
+        margin: auto;
 
         && .imgContainer {
             max-width: 200px;

@@ -158,3 +158,19 @@
     }
 
 }
+
+
+.important-pointer-events {
+    pointer-events: all !important;
+  }
+  
+
+
+.Content-Comment{
+    display: flex;
+    && button{
+        color: cornflowerblue;
+        background: none;
+        border: none;
+    }
+}

@@ -219,3 +219,10 @@ div.desc {
   -ms-border-radius: 0.5rem;
   -o-border-radius: 0.5rem;
 }
+
+
+
+
+.nav-link{
+  display: flex !important;
+}
