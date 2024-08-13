@@ -1,0 +1,40 @@
+.title-ct {
+    color: black;
+    font-size: 2rem;
+    text-align: center;
+
+}
+
+
+.divMusic > div {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    row-gap: -29px;
+    display: grid;
+    column-gap: 7px;
+    height: 1px;
+   
+    && ._wrapper_1rwm5_1{
+        grid-column: span 1 / span 1;
+        
+    }
+    && input{
+        
+        margin: auto;
+    }
+    && ._wrapper_1sefb_1{
+        grid-row-start: 3;
+        overflow: visible !important;
+    }
+    && ._wrapper_t5ihs_1 {
+        grid-row-start: 3;
+        margin: 0px auto !important;
+        max-height: 820px !important;
+        min-height: 120px !important;
+        overflow-x: hidden !important;
+        
+        padding-right: 10px;
+        font-family: Quicksand, sans-serif;
+    }
+}
+

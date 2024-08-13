@@ -1,9 +1,12 @@
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-undef */
+import '/public/css/audioMusic.css'
 import { useEffect, useState } from 'react';
 import AudioPlayer from '@madzadev/audio-player';
 import '@madzadev/audio-player/dist/index.css';
 import { supabase } from '../../routes/Auth/supabaseClient';
+import SubirMusica from './UploadMusic';
+import { isAuthError } from '@supabase/supabase-js';
 
 const Reproductor = () => {
     const [tracks, setTracks] = useState([]);
@@ -63,32 +66,41 @@ const Reproductor = () => {
             return trackList;
         } catch (error) {
             console.log(error);
-            
+
 
         }
     };
 
     return (
-        <div>
+        <div className=''>
             {error ? (
                 <p>{error}</p>
             ) : tracks.length > 0 ? (
-                <AudioPlayer
-                    trackList={tracks}
-                    autoplay={false}
-                    autoPlayNextTrack={true}
-                    onPlay={(track) => console.log(`Playing ${track.title}`)}
-                    
-                    onError={(error) => {
-                        console.error('Audio player error:', error);
-                        setError('An error occurred while trying to play the audio.');
-                    }}
-                />
+                <div  >
+                    <section className='titlemusic'>
+                        <span className='title-ct'> <h3>Contribuir con una musica</h3>  </span>
+                        < SubirMusica />
+                    </section>
+                    <div className='divMusic'>
+
+                        <AudioPlayer
+                            trackList={tracks}
+                            autoplay={false}
+                            autoPlayNextTrack={true}
+                            onPlay={(track) => console.log(`Playing ${track.title}`)}
+
+                            onError={(error) => {
+                                console.error('Audio player error:', error);
+                                setError('An error occurred while trying to play the audio.');
+                            }}
+                        />
+                    </div>
+                </div>
             ) : (
                 <p>Loading tracks...</p>
             )}
         </div>
-        
+
     );
 };
 

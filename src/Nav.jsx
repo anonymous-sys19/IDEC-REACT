@@ -266,7 +266,9 @@ const MenuNavbar = () => {
         </Route>
       </Switch>
 
-        <Reproductor/>
+      <div className='fixed'>
+        <Reproductor />
+      </div>
     </BrowserRouter>
 
 
